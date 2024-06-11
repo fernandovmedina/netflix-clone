@@ -103,51 +103,98 @@ import Line from '../components/Line.astro';
 
 		<Line />
 
-		<section class="bg-black text-white px-40 py-20">
+		<section class="bg-black px-40 text-white py-20">
 			<div class="flex items-center justify-center pb-10">
 				<h1 class="font-extrabold text-5xl">Frecuent questions</h1>
 			</div>
 			<div>
 				<div>
-					<button class="accordion">What is Netflix?</button>
-					<div class="panel text-black">
+					<button class="accordion font-normal text-2xl my-1">What is Netflix?</button>
+					<div class="panel text-white">
 						<p>Netflix is a streaming service which offers a big quantity of movies, series and documentals on any tv connected to internet <br>Everything you want to see, at a accesible monthly cost. There is always something new to discover, and every week we add new movies and series!</p>
 					</div>
 				</div>
 				<div>
-					<button class="accordion">How much does Netflix cost?</button>
+					<button class="accordion font-normal text-2xl my-1">How much does Netflix cost?</button>
 					<div class="panel">
-						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+						<p>Enjoy Netflix on your smartphone, tablet, smart TV, laptop or streaming device, all for one flat monthly rate. Plans from $99 to $299 per month. No additional costs or contracts.</p>
 					</div>
 				</div>
 				<div>
-					<button class="accordion">Where can i watch Netflix?</button>
+					<button class="accordion font-normal text-2xl my-1">Where can i watch Netflix?</button>
 					<div class="panel">
-						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+						<p>Enjoy wherever you want, whenever you want. Sign in to your Netflix account to watch content instantly through netflix.com from your personal computer or any internet-connected device that has the Netflix app, such as smart TVs, smartphones, tablets, media players and consoles of games.<br>In addition, you can download your favorite series with the app for iOS or Android. With the download function, you can watch content wherever you go and without an internet connection. Take Netflix with you wherever you go.</p>
 					</div>
 				</div>
 				<div>
-					<button class="accordion">How do i cancel?</button>
+					<button class="accordion font-normal text-2xl my-1">How do i cancel?</button>
 					<div class="panel">
-						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+						<p>Netflix is ​​flexible. No annoying contracts or commitments. Cancel membership online with just two clicks. There are no cancellation fees. Start and end whenever you want.</p>
 					</div>
 				</div>
 				<div>
-					<button class="accordion">What can i watch on Netflix?</button>
+					<button class="accordion font-normal text-2xl my-1">What can i watch on Netflix?</button>
 					<div class="panel">
-						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+						<p>Netflix has a wide catalog of movies, series, documentaries, anime, award-winning originals and more. Everything you want to see, whenever you want.</p>
 					</div>
 				</div>
 				<div>
-					<button class="accordion">Is Netflix good for children?</button>
+					<button class="accordion font-normal text-2xl my-1">Is Netflix good for children?</button>
 					<div class="panel">
-						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+						<p>The Netflix experience for kids is included in the membership so parents have control while the little ones enjoy family shows and movies in their own space.<br>Kids profiles include PIN-protected parental controls that let you restrict what content kids can see based on age ratings and block certain titles you don't want kids to watch.</p>
 					</div>
+				</div>
+			</div>
+			<div class="text-center mt-10">
+				<h4 class="py-3 font-medium text-2xl">Wanna se now? Type your email to create a new account or restart your membership</h4>
+				<div class="py-3 flex justify-center w-full px-56">
+					<input type="email" placeholder="Email" class="bg-transparent text-white border border-gray-300 px-5 rounded mx-2 w-2/3">
+					<button type="submit" class="bg-red-700 flex justify-center items-center text-2xl px-4 py-2 rounded w-1/3">Comenzar <img src="/icons8-adelante-50.png" alt="arrow_image" class="w-4"></button>
 				</div>
 			</div>
 		</section>
 
 		<Line />
+
+		<footer class="w-full bg-black text-gray-400 px-40 py-12">
+			<h4 class="font-normal mb-4">Questions? Call to <a href="tel:800 953 1430">800 953 1430</a></h4>
+			<div class="w-full flex text-sm underline underline-offset-1 pb-4">
+				<div class="w-1/4 flex flex-col">
+					<a href="" class="hover:text-gray-200">Frecuent questions</a>
+					<a href="" class="hover:text-gray-200">Relationship with investors</a>
+					<a href="" class="hover:text-gray-200">Buy gift cards</a>
+					<a href="" class="hover:text-gray-200">Cookies preferences</a>
+					<a href="" class="hover:text-gray-200">Legal notices</a>
+				</div>
+				<div class="w-1/4 flex flex-col">
+					<a href="" class="hover:text-gray-200">Help center</a>
+					<a href="" class="hover:text-gray-200">Jobs</a>
+					<a href="" class="hover:text-gray-200">Form to see</a>
+					<a href="" class="hover:text-gray-200">Corporative information</a>
+					<a href="" class="hover:text-gray-200">Just on netflix</a>
+				</div>
+				<div class="w-1/4 flex flex-col">
+					<a href="" class="hover:text-gray-200">Account</a>
+					<a href="" class="hover:text-gray-200">Netflix store</a>
+					<a href="" class="hover:text-gray-200">Terms of use</a>
+					<a href="" class="hover:text-gray-200">Contact us</a>
+				</div>
+				<div class="w-1/4 flex flex-col">
+					<a href="" class="hover:text-gray-200">Press</a>
+					<a href="" class="hover:text-gray-200">Reddem gift card</a>
+					<a href="" class="hover:text-gray-200">Privacy</a>
+					<a href="" class="hover:text-gray-200">Speed test</a>
+				</div>
+			</div>
+			<button class="flex items-center mx-2 bg-black mb-4 text-white border border-gray-500 px-2 py-1 rounded">
+				<img src="/icons8-translate-google-64.png" alt="google_translate_img" class="w-6">
+				<select name="languages" id="languages" class="bg-black text-white">
+					<option value="english">English</option>
+					<option value="spanish">Spanish</option>
+				</select>
+			</button>
+			<p>Netflix</p>
+		</footer>
 	</main>
 
 	<script>
