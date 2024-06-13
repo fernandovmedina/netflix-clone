@@ -1,0 +1,37 @@
+---
+import FooterSign from "../components/Footer_sign.astro";
+import NavbarSign from "../components/Navbar_sign.astro";
+import Layout from "../layouts/Layout.astro";
+---
+
+
+<Layout title="Netflix">
+    <main>
+        <NavbarSign />
+
+        <section class="flex items-center justify-center">
+            <div class="text-center py-36 w-[30%]">
+                <img class="mx-auto" src="/correcto_circulo.png" alt="correcto_circulo_image">
+                <h5 class="text-sm mt-4">STEP <span class="font-bold">2</span> OF <span class="font-bold">4</span></h5>
+                <h1 class="font-bold text-4xl mb-4">Select your plan</h1>
+                <div class="flex items-center my-2">
+                    <img src="/correcto.png" alt="correcto_image">
+                    <h4 class="text-xl font-medium ml-2">Without compromises, cancel whenever you want</h4>
+                </div>
+                <div class="flex items-center my-2">
+                    <img src="/correcto.png" alt="correcto_image">
+                    <h4 class="text-xl font-medium ml-2">Entertainment without an end and low cost</h4>
+                </div>
+                <div class="flex items-center my-2">
+                    <img src="/correcto.png" alt="correcto_image">
+                    <h4 class="text-xl font-medium ml-2">Enjoy Netflix on all your devices</h4>
+                </div>
+                <div class="w-full flex">
+                    <a href="/signup/planform" class="bg-red-600 w-full text-white hover:bg-red-700 rounded py-3 mt-4 mx-auto">NEXT</a>
+                </div>
+            </div>
+        </section>
+
+        <FooterSign />
+    </main>
+</Layout>

@@ -1,0 +1,26 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import NavbarSign from "../../components/Navbar_sign.astro"
+import FooterSign from "../../components/Footer_sign.astro";
+---
+
+<Layout title="Netflix">
+    <main>
+        <NavbarSign />
+
+        <section class="flex items-center justify-center">
+            <div class="py-40 w-[40%]">
+                <img src="/Devices.png" alt="devices_image" class="w-60 mx-auto">
+                <p class="text-center mt-10 mb-2 text-sm">STEP <span class="font-bold">1</span> OF <span class="font-bold">4</span></p>
+                <h2 class="text-center font-bold text-4xl">Complete the account configuration</h2>
+                <h4 class="text-center mt-2 text-xl">Netflix is designed four you.</h4>
+                <h4 class="text-center text-xl">Create a password to start watching Netflix.</h4>
+                <div class="w-full flex justify-center mt-4">
+                    <a href="/signup/regform" class="bg-red-600 py-3 hover:bg-red-700 text-white w-full text-center rounded">NEXT</a>
+                </div>
+            </div>
+        </section>
+
+        <FooterSign />
+    </main>
+</Layout>

@@ -1,0 +1,27 @@
+---
+import FooterSign from "../../components/Footer_sign.astro";
+import NavbarSign from "../../components/Navbar_sign.astro";
+import Layout from "../../layouts/Layout.astro";
+---
+
+<Layout title="Netflix">
+    <main>
+        <NavbarSign />
+
+        <section class="flex items-center justify-center">
+            <div class="py-40 w-[35%]">
+                <h6 class="text-sm">STEP <span class="font-bold">1</span> OF <span class="font-bold">4</span></h6>
+                <h1 class="font-extrabold text-4xl pb-3">Create a password to start your membership</h1>
+                <h5 class="text-lg">Some steps more and that's it!</h5>
+                <h5 class="text-lg">We don't like procedures either.</h5>
+                <div class="flex flex-col mt-4">
+                    <input type="email" name="email" id="email" value="fernandomedina.fvm@gmail.com" class="px-3 py-2 border-2 border-gray-500 rounded">
+                    <input type="password" name="password" id="password" placeholder="Password" class="px-3 py-2 border-2 border-gray-500 rounded mt-2">
+                    <a href="/signup/verifyemail" class="text-center bg-red-600 mt-3 py-2 text-white rounded hover:bg-red-700">NEXT</a>
+                </div>
+            </div>
+        </section>
+
+        <FooterSign />
+    </main>
+</Layout>
