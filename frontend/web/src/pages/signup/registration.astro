@@ -16,11 +16,21 @@ import FooterSign from "../../components/Footer_sign.astro";
                 <h4 class="text-center mt-2 text-xl">Netflix is designed four you.</h4>
                 <h4 class="text-center text-xl">Create a password to start watching Netflix.</h4>
                 <div class="w-full flex justify-center mt-4">
-                    <a href="/signup/regform" class="bg-red-600 py-3 hover:bg-red-700 text-white w-full text-center rounded">NEXT</a>
+                    <button id="btn" class="bg-red-600 py-3 hover:bg-red-700 text-white w-full text-center rounded">NEXT</button>
                 </div>
             </div>
         </section>
 
         <FooterSign />
     </main>
+
+    <script>
+        // href="/signup/regform"
+        var btn = document.getElementById('btn');
+        var email = new URLSearchParams(window.location.search).get("email");
+
+        btn.addEventListener('click', () => {
+            window.location.href = `/signup/regform?email=${email}`;
+        });
+    </script>
 </Layout>

@@ -15,13 +15,26 @@ import Layout from "../../layouts/Layout.astro";
                 <h5 class="text-lg">Some steps more and that's it!</h5>
                 <h5 class="text-lg">We don't like procedures either.</h5>
                 <div class="flex flex-col mt-4">
-                    <input type="email" name="email" id="email" value="fernandomedina.fvm@gmail.com" class="px-3 py-2 border-2 border-gray-500 rounded">
+                    <input type="email" name="email" id="email" class="px-3 py-2 border-2 border-gray-500 rounded">
                     <input type="password" name="password" id="password" placeholder="Password" class="px-3 py-2 border-2 border-gray-500 rounded mt-2">
-                    <a href="/signup/verifyemail" class="text-center bg-red-600 mt-3 py-2 text-white rounded hover:bg-red-700">NEXT</a>
+                    <button id="btn" class="text-center bg-red-600 mt-3 py-2 text-white rounded hover:bg-red-700">NEXT</button>
                 </div>
             </div>
         </section>
 
         <FooterSign />
     </main>
+
+    <script>
+        var email = new URLSearchParams(window.location.search).get("email");
+        var emailInput = document.getElementById("email");
+
+        emailInput.value = email;
+
+        var btn = document.getElementById("btn");
+
+        btn.addEventListener('click', () => {
+            window.location.href = `/signup/verifyemail?email=${email}`;
+        });
+    </script>
 </Layout>

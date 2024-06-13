@@ -13,14 +13,25 @@ import Layout from "../../layouts/Layout.astro";
                 <img src="/icons8-aprobacion-50.png" alt="aprobacion_image" class="mx-auto mb-4">
                 <h6 class="text-sm">STEP <span class="font-bold">2</span> OF <span class="font-bold">4</span></h6>
                 <h1 class="font-extrabold text-4xl mb-3">Excelent! Now Let's verify your email</h1>
-                <h4 class="text-gray-600 text-lg">Click on the url we sent to <span class="font-bold">fernandomedina.fvm@gmail.com</span> to complete your verification.</h4>
+                <h4 class="text-gray-600 text-lg">Click on the url we sent to <span class="font-bold" id="emailSpan"></span> to complete your verification.</h4>
                 <h4 class="text-gray-600 text-lg">When you verify your email, you'll can upgrade the security of your account and get important notifications from Netflix.</h4>
                 <div class="flex w-full mt-4">
-                    <a href="/signup" class="bg-gray-300 hover:bg-gray-400 w-full rounded text-xl font-bold py-3">OMITIR</a>
+                    <button id="href" class="bg-gray-300 hover:bg-gray-400 w-full rounded text-xl font-bold py-3">OMITIR</button>
                 </div>
             </div>
         </section>
 
         <FooterSign />
     </main>
+
+    <script>
+        var email = new URLSearchParams(window.location.search).get("email");
+
+        document.getElementById("emailSpan").innerHTML = email;
+
+        // href="/signup"
+        document.getElementById("href").addEventListener('click', () => {
+            window.location.href = `/signup?email=${email}`;
+        });
+    </script>
 </Layout>

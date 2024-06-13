@@ -138,11 +138,27 @@ import Layout from "../../layouts/Layout.astro";
             </div>
         </section>
 
+        <section class="px-40 mb-10 text-sm text-gray-500">
+            <p class="mb-2"><a class="text-blue-600 hover:underline hover:underline-offset-1" href="https://help.netflix.com/node/126831">More info about the plan with ads.</a> If you select a plan with ads, you will be asked to provide your date of birth for ad personalization and for other purposes consistent with the Netflix <a href="https://help.netflix.com/legal/privacy" class="text-blue-600 hover:underline hover:underline-offset-1">Privacy Statement.</a></p>
+            <p class="mb-2">The availability of content in Full HD (1080p), Ultra HD (4K) and HDR depends on your internet service and the device in use. Not all content is available in all resolutions. See <a href="https://help.netflix.com/legal/termsofuse" class="text-blue-600 hover:underline hover:underline-offset-1">Terms of Use</a> for more information.</p>
+            <p>Only people who live with you can use your account. Add 1 extra member with the Standard plan or up to 2 with the Premium plan. <a class="text-blue-600 hover:underline hover:underline-offset-1" href="https://help.netflix.com/pricing">More info.</a> You can watch Netflix on 4 devices at the same time with the Premium plan and on 2 with the Standard or Standard plan with ads.</p>
+        </section>
+
+        <div class="text-center mb-10">
+            <button id="nextBTN" class="bg-red-600 text-white py-3 px-40 rounded hover:bg-red-700">NEXT</button>
+        </div>
+
         <FooterSign />
     </main>
 
     <script>
-        // divs
+        var nextBTN = document.getElementById("nextBTN");
+        var email = new URLSearchParams(window.location.search).get("email");
+    
+        nextBTN.addEventListener('click', () => {
+            window.location.href = `/signup/paymentPicker?email=${email}`;
+        });
+
         var div_1 = document.getElementById('div_1');
         var div_2 = document.getElementById('div_2');
         var div_3 = document.getElementById('div_3');
