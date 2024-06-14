@@ -2,6 +2,10 @@
   background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url("/MX-es-20240603-popsignuptwoweeks-perspective_alpha_website_medium.jpg");
 }
 
+.lg_help_bk {
+  background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url("/login-the-crown_2-1500x1000.jpg");
+}
+
 .auth_bg {
   background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6));
 }
