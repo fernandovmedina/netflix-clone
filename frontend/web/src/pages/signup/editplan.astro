@@ -157,7 +157,7 @@ import Layout from "../../layouts/Layout.astro";
         var password = new URLSearchParams(window.location.search).get("password");
     
         nextBTN.addEventListener('click', () => {
-            window.location.href = `/signup/paymentPicker?email=${email}&password=${password}&plan=${GRGH()}`;
+            window.location.href = `/signup/creditoption?email=${email}&password=${password}&plan=${GRGH()}`;
         });
 
         var div_1 = document.getElementById('div_1');

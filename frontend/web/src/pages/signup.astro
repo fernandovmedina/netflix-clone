@@ -37,9 +37,10 @@ import Layout from "../layouts/Layout.astro";
 
     <script>
         var email = new URLSearchParams(window.location.search).get("email");
+        var password = new URLSearchParams(window.location.search).get("password");
 
         document.getElementById("btn").addEventListener('click', () => {
-            window.location.href = `/signup/planform?email=${email}`;
+            window.location.href = `/signup/planform?email=${email}&password=${password}`;
         });
     </script>
 </Layout>

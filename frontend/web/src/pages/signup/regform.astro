@@ -28,13 +28,14 @@ import Layout from "../../layouts/Layout.astro";
     <script>
         var email = new URLSearchParams(window.location.search).get("email");
         var emailInput = document.getElementById("email");
+        var password = document.getElementById("password");
 
         emailInput.value = email;
 
         var btn = document.getElementById("btn");
 
         btn.addEventListener('click', () => {
-            window.location.href = `/signup/verifyemail?email=${email}`;
+            window.location.href = `/signup/verifyemail?email=${email}&password=${password.value}`;
         });
     </script>
 </Layout>
