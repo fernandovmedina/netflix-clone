@@ -1,0 +1,84 @@
+---
+import FooterSign from "../components/Footer_sign.astro";
+import NavbarSign from "../components/Navbar_sign.astro";
+import Layout from "../layouts/Layout.astro";
+---
+
+<Layout title="Netflix">
+    <main>
+        <NavbarSign />
+
+        <section class="w-full flex items-center justify-center">
+            <div class="w-[35%] py-16">
+                <div class="flex items-center justify-between">
+                    <h1 class="text-4xl font-bold mb-4">Create profiles</h1>
+                    <div>
+                        <img id="add" class="w-10 hover:w-12" src="/add_icon_red.png" alt="add_icon_red_image">
+                    </div>
+                </div>
+                <div class="flex">
+                    <img class="w-16" src="/netflix_profile_image_yellow.jpg" alt="netflix_profile_image_yellow_image">
+                    <input class="mx-4 border-2 border-gray-500 rounded px-3 w-full" type="text" placeholder="Profile name">
+                    <select name="ages" id="ages" class="bg-white font-bold text-lg">
+                        <option value="adult">Adult</option>
+                        <option value="child">Child</option>
+                    </select>
+                </div>
+                <div id="spawns">
+                    <div id="profileDiv" class="hidden flex my-2">
+                        <img class="w-16" src="/netflix_profile_image_yellow.jpg" alt="netflix_profile_image_yellow_image">
+                        <input class="mx-4 border-2 border-gray-500 rounded px-3 w-full" type="text" placeholder="Profile name">
+                        <select name="ages" id="ages" class="bg-white font-bold text-lg">
+                            <option value="adult">Adult</option>
+                            <option value="child">Child</option>
+                        </select>
+                        <div class="my-auto">
+                            <img class="w-10 ml-2" src="/delete_red_icon.png" alt="delete_red_icon_image">
+                        </div>
+                    </div>
+                </div>
+                <button class="bg-red-600 w-full my-4 text-white py-3 rounded hover:bg-red-700">SAVE</button>
+            </div>
+        </section>
+
+        <FooterSign />
+    </main>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', (event) => {
+            var spawns = document.getElementById("spawns");
+            var add = document.getElementById("add");
+            var counter = 0;
+    
+            add.addEventListener('click', () => {
+                counter++;
+    
+                var profileDiv = `
+                    <div id="div-${counter}" class="flex my-2">
+                        <img class="w-16" src="/netflix_profile_image_yellow.jpg" alt="netflix_profile_image_yellow_image">
+                        <input class="mx-4 border-2 border-gray-500 rounded px-3 w-full" type="text" placeholder="Profile name">
+                        <select name="ages" id="ages-${counter}" class="bg-white font-bold text-lg">
+                            <option value="adult">Adult</option>
+                            <option value="child">Child</option>
+                        </select>
+                        <div class="my-auto">
+                            <img id="delete-${counter}" class="delete w-10 ml-2" src="/delete_red_icon.png" alt="delete_red_icon_image">
+                        </div>
+                    </div>
+                `;
+    
+                spawns.insertAdjacentHTML('beforeend', profileDiv);
+            });
+
+            spawns.addEventListener('click', (e) => {
+                if (e.target && e.target.classList.contains('delete')) {
+                    var profileDiv = e.target.closest('div[id^="div-"]');
+                    if (profileDiv) {
+                        profileDiv.remove();
+                    }
+                }
+            });
+        });
+    </script>
+    
+</Layout>

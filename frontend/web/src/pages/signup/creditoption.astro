@@ -53,7 +53,7 @@ import Layout from "../../layouts/Layout.astro";
                         <br>
                         <p>By clicking the “Start Membership” button, you agree to our <a href="https://help.netflix.com/legal/termsofuse" class="text-blue-500 hover:underline hover:underline-offset-1">Terms of Use</a> and <a href="https://help.netflix.com/legal/privacy" class="text-blue-500 hover:underline hover:underline-offset-1">Privacy Statement</a> and represent that you are over 18 years of age. Additionally, you understand that Netflix will automatically continue your membership and, until you cancel, will bill you the monthly fee (currently $219 per month + applicable taxes) through your chosen payment method. You can cancel your membership at any time to avoid future charges. To cancel, go to Account and click “Cancel Membership.”</p>
                     </div>
-                    <button type="submit" class="bg-red-600 hover:bg-red-700 w-full rounded text-white font-bold py-3 my-3">START MEMBERSHIP</button>
+                    <button id="smBTN" type="button" class="bg-red-600 hover:bg-red-700 w-full rounded text-white font-bold py-3 my-3">START MEMBERSHIP</button>
                     <p class="text-xs text-gray-500">This page is protected for Google reCAPTCHA to verify you are not a robot. <button type="button" class="text-blue-600 hover:underline hover:underline-offset-1" id="inf">More info</button></p>
                     <div class="hidden mt-2" id="hidden">
                         <p class="text-xs text-gray-500">The information collected by Google reCAPTCHA is subject to Google's <a class="text-blue-600 hover:underline hover:underline-offset-1" href="https://policies.google.com/privacy">Privacy Policy</a> and <a href="https://policies.google.com/terms" class="text-blue-600 hover:underline hover:underline-offset-1">Terms of Service</a>, and is used to provide, maintain and improve the reCAPTCHA service, as well as for general security purposes (Google does not use it to personalize advertising). ).</p>
@@ -81,6 +81,12 @@ import Layout from "../../layouts/Layout.astro";
 
         change.addEventListener('click', () => {
             window.location.href = `/signup/editplan?email=${email}&password=${password}&plan=${plan}`;
+        });
+
+        var smBTN = document.getElementById("smBTN");
+
+        smBTN.addEventListener('click', () => {
+            window.location.href = "/createProfile"
         });
 
         document.getElementById("chn").addEventListener('click', () => {
