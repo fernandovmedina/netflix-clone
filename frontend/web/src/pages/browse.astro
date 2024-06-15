@@ -1,0 +1,16 @@
+---
+import Layout from "../layouts/Layout.astro";
+import ProfileCards from "../layouts/ProfileCards";
+---
+
+<Layout title="Netflix">
+    <main>
+        <section class="bg-gradient-to-b from-black to-gray-950 text-white h-[100vh] flex items-center justify-center">
+            <div class="text-center">
+                <h1 class="font-bold text-5xl">Who's watching now?</h1>
+                <ProfileCards />
+                <a href="/ManageProfiles" class="border-2 border-gray-400 hover:border-white hover:text-white px-3 py-2 text-gray-400">Manage profiles</a>
+            </div>
+        </section>
+    </main>
+</Layout>

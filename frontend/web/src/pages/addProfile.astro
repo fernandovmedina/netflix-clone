@@ -1,0 +1,45 @@
+---
+import Layout from "../layouts/Layout.astro";
+---
+
+<Layout title="Netflix">
+    <main>
+        <section class="bg-gradient-to-b from-black to-gray-950 text-white h-[100vh] flex flex-col items-center justify-center">
+            <div>
+                <h1 class="font-bold text-4xl">Add profile</h1>
+                <h4 class="text-gray-500 my-3">Add a new profile for another person who watches Netflix.</h4>
+                <div class="border-y-2 border-gray-500 flex items-center py-4">
+                    <img class="w-24" src="https://occ-0-7553-114.1.nflxso.net/dnm/api/v6/vN7bi_My87NPKvsBoib006Llxzg/AAAABZfhNS88u5ao0M3F5X4HRBGCFsqdb2nncDt32YQHoM-1BeLJq93H30hWyleqclSwt1jNGm6l0tkeefKiiCOLLL5gNjpSjS_Xlaij.png?r=bd7" alt="image_url">
+                    <div>
+                        <input class="mx-2 bg-gray-600 text-white p-2" type="text" placeholder="Name" required>
+                    </div>
+                    <input type="checkbox" class="mx-2" id="check">
+                    <h3 class="text-lg" id="checkH">Children?</h3>
+                </div>
+                <div class="mt-4">
+                    <button id="continue" class="mr-2 border-2 border-gray-600 text-gray-600 hover:bg-red-600 hover:border-transparent hover:text-white font-semibold px-4 py-2">Continue</button>
+                    <button id="cancel" class="ml-2 border-2 border-gray-600 text-gray-600 hover:border-white hover:text-white px-4 py-2 font-semibold">Cancel</button>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        var check = document.getElementById("check");
+
+        document.getElementById("checkH").addEventListener('click', () => {
+            check.checked = !check.checked;
+        });
+
+        var continueBTN = document.getElementById('continue');
+        var cancelBTN = document.getElementById('cancel');
+
+        continueBTN.addEventListener('click', () => {
+            window.location.href = "/browse";
+        });
+
+        cancelBTN.addEventListener('click', () => {
+            window.location.href = "/browse";
+        });
+    </script>
+</Layout>
