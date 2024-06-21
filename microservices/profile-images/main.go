@@ -4,30 +4,38 @@ import (
 	"log"
 	"net/http"
 	"os"
+	"time"
 
 	"github.com/joho/godotenv"
 
-	"github.com/fernandovmedina/netflix-clone/microservices/profile-images/database"
+	"github.com/fernandovmedina/netflix-clone/microservices/profile-images/handlers"
 )
 
 func main() {
 	var err error
 
-	if _, err = database.ConnDB(); err != nil {
-		log.Println(err.Error())
-	}
-
 	if err = godotenv.Load(); err != nil {
-		log.Println(err.Error())
+		log.Printf("Error on microservices/profile-images: %v\n", err.Error())
 	}
 
 	var (
-		serverPort string = os.Getenv("SERVER_PORT")
+		serverAdd string = os.Getenv("SERVER_ADDRESS")
 	)
 
 	var mux *http.ServeMux = http.NewServeMux()
 
-	if err = http.ListenAndServe(serverPort, mux); err != nil {
-		log.Println(err.Error())
+	var server http.Server = http.Server{
+		Addr:           serverAdd,
+		Handler:        mux,
+		WriteTimeout:   20 * time.Second,
+		ReadTimeout:    20 * time.Second,
+		MaxHeaderBytes: http.DefaultMaxHeaderBytes,
 	}
+
+	mux.HandleFunc("/microservice/title", handlers.Title)
+	mux.HandleFunc("/microservice/titles", handlers.Titles)
+
+	log.Printf("Microservice running on %s\n", serverAdd)
+
+	log.Fatal(server.ListenAndServe())
 }
