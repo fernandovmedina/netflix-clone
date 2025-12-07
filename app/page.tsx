@@ -1,4 +1,5 @@
 "use client";
+
 import Image from "next/image";
 import Link from "next/link";
 import { useRef, useState } from "react";
@@ -154,12 +155,14 @@ export default function Home() {
         <div className="relative">
           <nav className="flex flex-row w-full items-center pt-2">
             <div className="w-1/2">
-              <Image
-                src="/netflix_logo.svg"
-                alt="netflix_logo"
-                width={150}
-                height={50}
-              />
+              <Link href="/">
+                <Image
+                  src="/netflix_logo.svg"
+                  alt="netflix_logo"
+                  width={150}
+                  height={50}
+                />
+              </Link>
             </div>
             <div className="w-1/2 flex flex-row items-stretch justify-end">
               <div className="flex flex-row border-2 border-gray-400 bg-black/60 px-2 rounded-lg mr-3 h-full">
@@ -247,6 +250,73 @@ export default function Home() {
 
         <h2 className="font-bold text-2xl pb-7">Frequently Asked Questions</h2>
         <FrequentlyAskedQuestions />
+
+        <div className="flex flex-col justify-center text-center mt-20 mb-32">
+          <h2 className="font-bold mb-5">Ready to watch? Enter your email to create or restart your membership.</h2>
+          <div className="flex flex-row items-stretch justify-center">
+            <input
+              className="bg-transparent border-2 font-bold border-gray-600 rounded px-3 h-full py-3 w-[400px] text-white placeholder:text-gray-400"
+              placeholder="Email address"
+            />
+
+            <button className="flex flex-row font-extrabold items-center bg-red-700 px-4 rounded ml-3 h-full py-3">
+              Get Started
+              <Image
+                src="/home/greater.png"
+                alt="greater_icon"
+                width={20}
+                height={0}
+                className="ml-2"
+              />
+            </button>
+          </div>
+        </div>
+
+        <footer className="mb-48">
+          <h1 className="font-bold mb-5">Questions? Call <a href="tel:8008539947" className="underline">800 953 9947</a></h1>
+          <div className="flex flex-row w-full text-sm underline text-gray-400">
+            <div className="w-1/4 flex flex-col">
+              <a href="" className="hover:text-gray-200 mb-3">FAQ</a>
+              <a href="" className="hover:text-gray-200 mb-3">Investor Relations</a>
+              <a href="" className="hover:text-gray-200 mb-3">Buy Gift Cards</a>
+              <a href="" className="hover:text-gray-200 mb-3">Cookie Preferences</a>
+              <a href="" className="hover:text-gray-200 mb-3">Legal Notices</a>
+            </div>
+            <div className="w-1/4 flex flex-col">
+              <a href="" className="hover:text-gray-200 mb-3">Help Center</a>
+              <a href="" className="hover:text-gray-200 mb-3">Jobs</a>
+              <a href="" className="hover:text-gray-200 mb-3">Ways to Watch</a>
+              <a href="" className="hover:text-gray-200 mb-3">Corporate Information</a>
+              <a href="" className="hover:text-gray-200 mb-3">Only on Netflix</a>
+            </div>
+            <div className="w-1/4 flex flex-col">
+              <a href="" className="hover:text-gray-200 mb-3">Account</a>
+              <a href="" className="hover:text-gray-200 mb-3">Netflix Shop</a>
+              <a href="" className="hover:text-gray-200 mb-3">Terms of Use</a>
+              <a href="" className="hover:text-gray-200 mb-3">Contact Us</a>
+            </div>
+            <div className="w-1/4 flex flex-col">
+              <a href="" className="hover:text-gray-200 mb-3">Media Center</a>
+              <a href="" className="hover:text-gray-200 mb-3">Reddem Gift Cards</a>
+              <a href="" className="hover:text-gray-200 mb-3">Privacy</a>
+              <a href="" className="hover:text-gray-200 mb-3">Speed Test</a>
+            </div>
+          </div>
+          <div className="flex flex-row border-2 border-gray-400 bg-black/60 px-2 rounded-lg w-36">
+            <Image
+              src="/language.png"
+              alt="language_icon"
+              width={35}
+              height={0}
+            />
+            <select className="text-white pl-2 bg-transparent font-semibold">
+              <option>English</option>
+              <option>Español</option>
+            </select>
+          </div>
+          <h1 className="text-gray-200 mt-5 text-xl">Netflix</h1>
+          <h1 className="text-sm font-extrabold mt-3">Made by <a href="mailto:fernandovazquez.favm@gmail.com" className="underline">@fernandovmedina</a> & <a className="underline" href="https://neurovix.com.mx">Neurovix</a></h1>
+        </footer>
       </div>
     </main>
   );
