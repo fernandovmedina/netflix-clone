@@ -1,7 +1,7 @@
 "use client";
 import Image from "next/image";
 import Link from "next/link";
-import { useRef } from "react";
+import { useRef, useState } from "react";
 
 export default function Home() {
   const carrouselData = [
@@ -52,7 +52,7 @@ export default function Home() {
                 alt="carousel item"
                 width={220}
                 height={0}
-                className="rounded-xl"
+                className="rounded-xl hover:w-80"
               />
             </div>
           ))}
@@ -104,6 +104,45 @@ export default function Home() {
             </p>
           </div>
         </div>
+      </div>
+    );
+  };
+
+  const FrequentlyAskedQuestions = () => {
+    const frequentlyAskedQuestionsData = 
+    [
+      { id: 1, title: "What is Netflix", text: "Netflix is a streaming service that offers a wide variety of award-winning TV shows, movies, anime, documentaries, and more on thousands of internet-connected devices. You can watch as much as you want, whenever you want – all for one low monthly price. There's always something new to discover and new TV shows and movies are added every week!", },
+      { id: 2, title: "How much does Netflix cost?", text: "Watch Netflix on your smartphone, tablet, Smart TV, laptop, or streaming device, all for one fixed monthly fee. Plans range from MXN 119 to MXN 329/month.", },
+      { id: 3, title: "Where can i watch?", text: "Watch anywhere, anytime. Sign in with your Netflix account to watch instantly on the web at netflix.com from your personal computer or on any internet-connected device that offers the Netflix app, including smart TVs, smartphones, tablets, streaming media players and game consoles. You can also download your favorite shows with the iOS or Android app. Use downloads to watch while you're on the go and without an internet connection. Take Netflix with you anywhere.", },
+      { id: 4, title: "How do i cancel?", text: "Netflix is flexible. You can easily cancel your account online in two clicks. There are no cancellation fees – start or stop your account anytime.", },
+      { id: 5, title: "What can i watch on Netflix?", text: "Netflix has an extensive library of feature films, documentaries, TV shows, anime, award-winning Netflix originals, and more. Watch as much as you want, anytime you want.", },
+      { id: 6, title: "Is netflix good for kids?", text: "The Netflix Kids experience is included in your membership to give parents control while kids enjoy family-friendly TV shows and movies in their own space. Kids profiles come with PIN-protected parental controls that let you restrict the maturity rating of content kids can watch and block specific titles you don’t want kids to see.", },
+    ];
+
+    const [openId, setOpenId] = useState<number | null>(null);
+
+    const toggle = (id: number) => {
+      setOpenId(openId === id ? null : id);
+    };
+
+    return (
+      <div>
+        {frequentlyAskedQuestionsData.map((item) => (
+          <div key={item.id}>
+            <div
+              onClick={() => toggle(item.id)}
+              className="flex flex-row items-center justify-between bg-gray-800 my-3 px-5 py-3 hover:bg-gray-700 hover:cursor-pointer"
+            >
+              <h1 className="font-bold text-2xl">{item.title}</h1>
+              <Image src="/home/more.png" alt="expand_icon" width={50} height={0} />
+            </div>
+            {openId === item.id && (
+              <div className="bg-gray-800 -mt-2 px-2 py-2">
+                <h1>{item.text}</h1>
+              </div>
+            )}
+          </div>
+        ))}
       </div>
     );
   };
@@ -207,6 +246,7 @@ export default function Home() {
         <SliderCards />
 
         <h2 className="font-bold text-2xl pb-7">Frequently Asked Questions</h2>
+        <FrequentlyAskedQuestions />
       </div>
     </main>
   );

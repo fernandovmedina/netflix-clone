@@ -1,0 +1,1 @@
+=> Add Image Modal on every <Image /> (Trending Now) on /  [PENDING]
