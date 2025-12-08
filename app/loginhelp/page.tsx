@@ -12,10 +12,15 @@ export default function LoginHelp() {
   const [mobileNumberAlert, setMobileNumberAlert] = useState<string>("");
   const [mobileNumber, setMobileNumber] = useState<string>("");
 
-  const toggle = () => {
-    emailPressed ? setSmsPressed(!smsPressed) : setSmsPressed(!smsPressed);
-    smsPressed ? setEmailPressed(!emailPressed) : setEmailPressed(!emailPressed);
-  }
+  const toggle = (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (e.target.name === "email") {
+      setEmailPressed(true);
+      setSmsPressed(false);
+    } else {
+      setEmailPressed(false);
+      setSmsPressed(true);
+    }
+  };
 
   const verifyEmail = () => {
     if (email === "") {
@@ -47,12 +52,16 @@ export default function LoginHelp() {
             <h1 className="font-extrabold text-3xl">Update password, email or phone</h1>
             <p className="my-3 font-medium">How would you like to reset your password?</p>
             <div className="flex flex-row items-center pl-5">
-              <input type="checkbox" checked={emailPressed} onClick={toggle} />
-              <p onClick={toggle} className="hover:cursor-pointer ml-3 font-medium">Email</p>
+              <label>
+                <input name="email" type="checkbox" className="mr-2" checked={emailPressed} onChange={toggle} />
+                Email
+              </label>
             </div>
             <div className="flex flex-row items-center pl-5">
-              <input type="checkbox" checked={smsPressed} onClick={toggle} />
-              <p onClick={toggle} className="hover:cursor-pointer ml-3 font-medium">Text Message (SMS)</p>
+              <label>
+                <input name="sms" type="checkbox" className="mr-2" checked={smsPressed} onChange={toggle} />
+                Text Message (SMS)
+              </label>
             </div>
             {
               emailPressed ?

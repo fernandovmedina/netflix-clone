@@ -14,9 +14,9 @@ export default function Login() {
   const [mobileNumberAlert, setMobileNumberAlert] = useState<string>("");
   const [passwordAlert, setPasswordAlert] = useState<string>("");
 
-  const toggleRememberMe = () => {
-    setRememberMe(!rememberMe);
-  }
+  const toggleRememberMe = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setRememberMe(e.target.checked);
+  };
 
   const verifySignIn = (type: string) => {
     switch (type) {
@@ -88,8 +88,15 @@ export default function Login() {
             )}
             <a href="/loginhelp" className="underline hover:text-gray-400 text-center">Forgot Password?</a>
             <div className="flex flex-row items-center my-4">
-              <input type="checkbox" className="mr-3" checked={rememberMe} onClick={toggleRememberMe} />
-              <p onClick={toggleRememberMe} className="hover:cursor-pointer">Remember me</p>
+              <label className="flex flex-row items-center my-4 hover:cursor-pointer">
+                <input
+                  type="checkbox"
+                  className="mr-3"
+                  checked={rememberMe}
+                  onChange={toggleRememberMe}
+                />
+                Remember me
+              </label>
             </div>
             <div className="flex flex-row items-center mb-4">
               <p className="text-gray-400 mr-2">New to Netflix? {' '}</p>

@@ -18,6 +18,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <head>
+        <link rel="icon" href="/netflix.png" type="image/png" />
+      </head>
       <body
         className={`${getRoboto.variable} antialiased`}
       >

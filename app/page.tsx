@@ -2,10 +2,13 @@
 
 import Image from "next/image";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { useRef, useState } from "react";
 
 export default function Home() {
   const [email, setEmail] = useState<string>("");
+
+  const router: any = useRouter();
 
   const carrouselData = [
     { id: 1, imgSrc: "/home/stranger_things.webp" },
@@ -155,6 +158,11 @@ export default function Home() {
 
     if (email === "") {
       emailInput.focus();
+    }
+
+    if (email !== "") {
+      localStorage.setItem("signup_email", email);
+      router.push("/signup/linkRegistration");
     }
   }
 
