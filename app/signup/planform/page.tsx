@@ -24,7 +24,120 @@ export default function Planform() {
           STEP <span className="font-bold">1</span> OF{" "}
           <span className="font-bold">4</span>
         </p>
-        <h1>Choose the plan that’s right for you</h1>
+        <h1 className="text-4xl font-bold">Choose the plan that's right for you</h1>
+        <div className="mt-5 mb-20 flex flex-row w-full">
+          <div className="w-1/3 flex flex-col p-3 border border-gray-700 rounded-xl">
+            <div className="bg-linear-to-r rounded px-2 pt-3 pb-2 from-sky-800 via-cyan-800 to-sky-950">
+              <h1 className="text-white font-bold">Standard with ads</h1>
+              <p className="text-white pb-3 text-sm">1080p</p>
+            </div>
+            <div className="mt-7 border-b border-gray-700">
+              <h2 className="text-gray-700 font-medium text-sm">Monthly price</h2>
+              <p className="text-base font-extrabold pb-2">MXN 119</p>
+            </div>
+            <div className="border-b border-gray-700 mt-3">
+              <h2 className="text-gray-700 font-medium text-sm">Video and sound quality</h2>
+              <p className="text-base font-extrabold pb-2">Good</p>
+            </div>
+            <div className="border-b border-gray-700 mt-3">
+              <h2 className="text-gray-700 font-medium text-sm">Resolution</h2>
+              <p className="text-base font-extrabold pb-2">1080p (Full HD)</p>
+            </div>
+            <div className="border-b border-gray-700 mt-3">
+              <h2 className="text-gray-700 font-medium text-sm">Supported devices</h2>
+              <p className="text-base font-extrabold pb-2">TV, computer, mobile phone, tablet</p>
+            </div>
+            <div className="border-b border-gray-700 mt-3">
+              <h2 className="text-gray-700 font-medium text-sm">Devices your household can watch at the same time</h2>
+              <p className="text-base font-extrabold pb-2">2</p>
+            </div>
+            <div className="border-b border-gray-700 mt-3">
+              <h2 className="text-gray-700 font-medium text-sm">Download devices</h2>
+              <p className="text-base font-extrabold pb-2">2</p>
+            </div>
+            <div className="mt-3">
+              <h2 className="text-gray-700 font-medium text-sm">Ads</h2>
+              <p className="text-base font-extrabold pb-2">Less than you might think</p>
+            </div>
+          </div>
+          <div className="w-1/3 flex flex-col ml-2 p-3 border border-gray-700 rounded-xl">
+            <div className="bg-linear-to-r rounded px-2 pt-3 pb-2 from-sky-800 via-cyan-800 to-sky-950">
+              <h1 className="text-white font-bold">Standard</h1>
+              <p className="text-white pb-3 text-sm">1080p</p>
+            </div>
+            <div className="mt-7 border-b border-gray-700">
+              <h2 className="text-gray-700 font-medium text-sm">Monthly price</h2>
+              <p className="text-base font-extrabold pb-2">MXN 249</p>
+            </div>
+            <div className="border-b border-gray-700 mt-3">
+              <h2 className="text-gray-700 font-medium text-sm">Video and sound quality</h2>
+              <p className="text-base font-extrabold pb-2">Good</p>
+            </div>
+            <div className="border-b border-gray-700 mt-3">
+              <h2 className="text-gray-700 font-medium text-sm">Resolution</h2>
+              <p className="text-base font-extrabold pb-2">1080p (Full HD)</p>
+            </div>
+            <div className="border-b border-gray-700 mt-3">
+              <h2 className="text-gray-700 font-medium text-sm">Supported devices</h2>
+              <p className="text-base font-extrabold pb-2">TV, computer, mobile phone, tablet</p>
+            </div>
+            <div className="border-b border-gray-700 mt-3">
+              <h2 className="text-gray-700 font-medium text-sm">Devices your household can watch at the same time</h2>
+              <p className="text-base font-extrabold pb-2">2</p>
+            </div>
+            <div className="border-b border-gray-700 mt-3">
+              <h2 className="text-gray-700 font-medium text-sm">Download devices</h2>
+              <p className="text-base font-extrabold pb-2">2</p>
+            </div>
+            <div className="mt-3">
+              <h2 className="text-gray-700 font-medium text-sm">Ads</h2>
+              <p className="text-base font-extrabold pb-2">No ads</p>
+            </div>
+          </div>
+          <div className="w-1/3 flex flex-col ml-2 p-3 border border-gray-700 rounded-xl">
+            <div className="bg-linear-to-r rounded px-2 pt-3 pb-2 from-sky-800 via-cyan-800 to-sky-950">
+              <h1 className="text-white font-bold">Premium</h1>
+              <p className="text-white pb-3 text-sm">4K + HDR</p>
+            </div>
+            <div className="mt-7 border-b border-gray-700">
+              <h2 className="text-gray-700 font-medium text-sm">Monthly price</h2>
+              <p className="text-base font-extrabold pb-2">MXN 329</p>
+            </div>
+            <div className="border-b border-gray-700 mt-3">
+              <h2 className="text-gray-700 font-medium text-sm">Video and sound quality</h2>
+              <p className="text-base font-extrabold pb-2">Best</p>
+            </div>
+            <div className="border-b border-gray-700 mt-3">
+              <h2 className="text-gray-700 font-medium text-sm">Resolution</h2>
+              <p className="text-base font-extrabold pb-2">4K (Ultra HD) + HDR</p>
+            </div>
+            <div className="border-b border-gray-700 mt-3">
+              <h2 className="text-gray-700 font-medium text-sm">Supported devices</h2>
+              <p className="text-base font-extrabold pb-2">TV, computer, mobile phone, tablet</p>
+            </div>
+            <div className="border-b border-gray-700 mt-3">
+              <h2 className="text-gray-700 font-medium text-sm">Devices your household can watch at the same time</h2>
+              <p className="text-base font-extrabold pb-2">4</p>
+            </div>
+            <div className="border-b border-gray-700 mt-3">
+              <h2 className="text-gray-700 font-medium text-sm">Download devices</h2>
+              <p className="text-base font-extrabold pb-2">2</p>
+            </div>
+            <div className="mt-3">
+              <h2 className="text-gray-700 font-medium text-sm">Ads</h2>
+              <p className="text-base font-extrabold pb-2">No ads</p>
+            </div>
+          </div>
+        </div>
+        <div className="pb-10 text-sm">
+          <p>Learn more about an ad-supported plan. If you select an ad-supported plan, you will be required to provide your date of birth for ads personalization and other purposes consistent with the Netflix Privacy Statement.</p>
+          <p className="my-3">Full HD (1080p), Ultra HD (4K) and HDR avalability subjet to your internet service and device capabilities. Not all content is available in all resolutions. See Terms of Use for more details.</p>
+          <p>Only people who live with you may use your account. Add 1 extra member with Standard or up to 2 with Premium. Learn more. Watch on 4 different devices at the same time with remium and 2 with Standard or Standard with ads.</p>
+          <p className="mt-3 mb-8">Live events are included with any Netflix plan and contain ads.</p>
+          <div className="flex justify-center">
+            <button className="bg-red-600 text-white hover:bg-red-400 w-[30%] font-bold text-xl py-5 rounded">NEXT</button>
+          </div>
+        </div>
       </section>
       <footer className="text-gray-800 py-15 px-40 bg-gray-400/40">
         <a href="tel:8009539947">Questions? Call 800 953 9947 (Toll-Free)</a>
