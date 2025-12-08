@@ -5,6 +5,8 @@ import Link from "next/link";
 import { useRef, useState } from "react";
 
 export default function Home() {
+  const [email, setEmail] = useState<string>("");
+
   const carrouselData = [
     { id: 1, imgSrc: "/home/stranger_things.webp" },
     { id: 2, imgSrc: "/home/frankenstin.webp" },
@@ -148,6 +150,14 @@ export default function Home() {
     );
   };
 
+  const verifyEmail = () => {
+    const emailInput: HTMLElement | any = document.getElementById("email_input");
+
+    if (email === "") {
+      emailInput.focus();
+    }
+  }
+
   return (
     <main className="bg-black">
       <div className="relative bg-[url(/home/hero.jpg)] bg-cover bg-center px-36 py-5">
@@ -199,11 +209,13 @@ export default function Home() {
             </p>
             <div className="flex flex-row items-stretch">
               <input
+                id="email_input"
                 className="bg-transparent border-2 font-bold border-gray-600 rounded px-3 h-full py-3 w-[400px] text-white placeholder:text-gray-400"
+                onChange={e => setEmail(e.target.value)}
                 placeholder="Email address"
               />
 
-              <button className="flex flex-row font-extrabold items-center bg-red-700 px-4 rounded ml-3 h-full py-3">
+              <button onClick={verifyEmail} className="flex flex-row font-extrabold items-center bg-red-700 hover:bg-red-500 hover:cursor-pointer px-4 rounded ml-3 h-full py-3">
                 Get Started
                 <Image
                   src="/home/greater.png"

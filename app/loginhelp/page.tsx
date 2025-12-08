@@ -6,10 +6,31 @@ import { useState } from "react";
 export default function LoginHelp() {
   const [emailPressed, setEmailPressed] = useState<boolean>(true);
   const [smsPressed, setSmsPressed] = useState<boolean>(false);
+  const [forgot, setForgot] = useState<boolean>(false);
+  const [email, setEmail] = useState<string>("");
+  const [emailAlert, setEmailAlert] = useState<string>("");
+  const [mobileNumberAlert, setMobileNumberAlert] = useState<string>("");
+  const [mobileNumber, setMobileNumber] = useState<string>("");
 
   const toggle = () => {
     emailPressed ? setSmsPressed(!smsPressed) : setSmsPressed(!smsPressed);
     smsPressed ? setEmailPressed(!emailPressed) : setEmailPressed(!emailPressed);
+  }
+
+  const verifyEmail = () => {
+    if (email === "") {
+      setEmailAlert("Please enter a valid email.");
+    } else {
+      setEmailAlert("");
+    }
+  }
+
+  const verifyMobileNumber = () => {
+    if (mobileNumber === "") {
+      setMobileNumberAlert("Please enter a valid phone number.");
+    } else {
+      setMobileNumberAlert("");
+    }
   }
 
   return (
@@ -21,7 +42,7 @@ export default function LoginHelp() {
           </Link>
           <Link href="/login" className="bg-red-600 rounded px-5 py-2 font-bold hover:bg-red-700">Sign In</Link>
         </nav>
-        <div className="text-black flex items-center justify-center">
+        <div className={`${!forgot ? "text-black flex items-center justify-center" : "hidden"}`}>
           <div className="bg-white mt-20 px-10 py-15 w-[35%]">
             <h1 className="font-extrabold text-3xl">Update password, email or phone</h1>
             <p className="my-3 font-medium">How would you like to reset your password?</p>
@@ -38,18 +59,33 @@ export default function LoginHelp() {
               (
                 <div className="mt-4">
                   <p>We will send you an email with instructions on how to reset your password.</p>
-                  <input type="email" placeholder="Email" className="mt-3 mb-5 border border-black rounded px-5 py-2 w-full text-left" />
-                  <button className="bg-red-600 hover:bg-red-700 w-full text-center py-2 rounded text-white font-bold mb-5">Email Me</button>
+                  <input onChange={(e) => setEmail(e.target.value)} type="email" placeholder="Email" className="mt-3 border border-black rounded px-5 py-2 w-full text-left" />
+                  <p className="text-red-600 text-xs my-2">{emailAlert}</p>
+                  <button onClick={() => verifyEmail()} className="bg-red-600 hover:bg-red-700 w-full text-center py-2 rounded text-white font-bold mb-5">Email Me</button>
                 </div>
               ) : (
                 <div className="mt-4">
                   <p>We will text you a verification code to reset your password. Message and data rates may apply.</p>
-                  <input type="number" placeholder="Mobile number" className="mt-2 mb-5 w-full border border-black rounded px-5 py-2 text-left" />
-                  <button className="bg-red-600 hover:bg-red-700 w-full text-center text-white py-2 rounded font-bold mb-5">Text Me</button>
+                  <input onChange={(e) => setMobileNumber(e.target.value)} type="text" placeholder="Mobile number" className="mt-2 w-full border border-black rounded px-5 py-2 text-left" />
+                  <p className="text-red-600 text-xs my-2">{mobileNumberAlert}</p>
+                  <button onClick={() => verifyMobileNumber()} className="bg-red-600 hover:bg-red-700 w-full text-center text-white py-2 rounded font-bold mb-5">Text Me</button>
                 </div>
               )
             }
-            <a href="" className="underline">I don't remember my email or phone.</a>
+            <p className="underline" onClick={() => setForgot(true)}>I don't remember my email or phone.</p>
+          </div>
+        </div>
+        <div className={`${forgot ? "flex items-center justify-center mt-20" : "hidden"}`}>
+          <div className="bg-white text-black w-[35%] px-10 py-15 flex flex-col">
+            <h1 className="font-extrabold text-3xl">Forgot email or mobile number</h1>
+            <p className="my-5 text-sm">Please provide this information to help us find your account (all fields required):</p>
+            <input className="border border-gray-700 rounded px-5 py-2" type="text" placeholder="First name on account" />
+            <input className="border border-gray-700 my-4 rounded px-5 py-2" type="text" placeholder="Last name on account" />
+            <input className="border border-gray-700 rounded px-5 py-2" type="text" placeholder="Credit or debit card number on file" />
+            <div className="flex flex-row items-center mt-5">
+              <button className="bg-red-600 rounded px-3 py-2 text-white font-bold mr-3 hover:bg-red-400">Find Account</button>
+              <button onClick={() => setForgot(false)} className="bg-gray-600/50 rounded px-3 py-2 font-bold hover:bg-gray-600/30">Cancel</button>
+            </div>
           </div>
         </div>
       </div>

@@ -2,8 +2,50 @@
 
 import Image from "next/image";
 import Link from "next/link";
+import { useState } from "react";
 
 export default function Login() {
+  const [rememberMe, setRememberMe] = useState<boolean>(false);
+  const [signInCode, setSignInCode] = useState<boolean>(false);
+  const [email, setEmail] = useState<string>("");
+  const [mobileNumber, setMobileNumber] = useState<string>("");
+  const [password, setPassword] = useState<string>("");
+  const [emailAlert, setEmailAlert] = useState<string>("");
+  const [mobileNumberAlert, setMobileNumberAlert] = useState<string>("");
+  const [passwordAlert, setPasswordAlert] = useState<string>("");
+
+  const toggleRememberMe = () => {
+    setRememberMe(!rememberMe);
+  }
+
+  const verifySignIn = (type: string) => {
+    switch (type) {
+      case "code":
+        if (mobileNumber === "") {
+          setMobileNumberAlert("Please enter a valid email or mobile number.");
+        } else {
+          setMobileNumberAlert("");
+        }
+      case "password":
+        if (email === "" && password === "") {
+          setEmailAlert("Please enter a valid email or mobile number.");
+          setPasswordAlert("Your password must contain between 4 and 60 characters.")
+        }
+        if (email == "") {
+          setEmailAlert("Please enter a valid email or mobile number.");
+        }
+        if (password == "") {
+          setPasswordAlert("Your password must contain between 4 and 60 characters.")
+        }
+        if (email !== "") {
+          setEmailAlert("");
+        }
+        if (password !== "") {
+          setPasswordAlert("");
+        }
+    }
+  }
+
   return (
     <main>
       <div className="bg-[url('/home/hero.jpg')] bg-cover bg-center px-40 h-screen">
@@ -20,15 +62,34 @@ export default function Login() {
         <div className="flex items-center justify-center">
           <div className="text-white flex flex-col bg-black/90 mt-10 px-15 py-10 w-[40%]">
             <h1 className="font-extrabold text-3xl">Sign In</h1>
-            <input className="mt-5 border-2 border-gray-500 px-5 py-3 rounded placeholder:text-gray-300 bg-gray-900/50" type="email" placeholder="Email or phone number" />
-            <input className="mt-5 border-2 border-gray-500 px-5 py-3 rounded placeholder:text-gray-300 bg-gray-900/50" type="password" placeholder="Password" />
-            <button className="bg-red-600 my-4 py-2 font-bold rounded hover:bg-red-700">Sign In</button>
+            {signInCode ? (
+              <>
+                <input onChange={(e) => setMobileNumber(e.target.value)} className="mt-5 border-2 border-gray-500 px-5 py-3 rounded placeholder:text-gray-300 bg-gray-900/50" type="email" placeholder="Email or mobile number" />
+                <p className="text-xs text-red-600 mt-2">{mobileNumberAlert}</p>
+              </>
+            ) : (
+              <>
+                <input onChange={(e) => setEmail(e.target.value)} className="mt-5 border-2 border-gray-500 px-5 py-3 rounded placeholder:text-gray-300 bg-gray-900/50" type="email" placeholder="Email or mobile number" />
+                <p className="text-xs text-red-600 mt-2">{emailAlert}</p>
+                <input onChange={(e) => setPassword(e.target.value)} className={`${signInCode ? "hidden" : "mt-5 border-2 border-gray-500 px-5 py-3 rounded placeholder:text-gray-300 bg-gray-900/50"}`} type="password" placeholder="Password" />
+                <p className="text-xs text-red-600 mt-2">{passwordAlert}</p>
+              </>
+            )}
+            {signInCode ? (
+              <button onClick={() => verifySignIn("code")} className="bg-red-600 my-4 py-2 font-bold rounded hover:bg-red-700 hover:cursor-pointer">Send Sign-In Code</button>
+            ) : (
+              <button onClick={() => verifySignIn("password")} className="bg-red-600 my-4 py-2 font-bold rounded hover:bg-red-700 hover:cursor-pointer">Sign In</button>
+            )}
             <p className="text-center text-gray-400">OR</p>
-            <button className="bg-gray-600/50 py-2 my-4 rounded">Use a Sign-In Code</button>
+            {signInCode ? (
+              <button onClick={() => setSignInCode(false)} className="bg-gray-600/50 py-2 my-4 rounded hover:cursor-pointer hover:bg-gray-600/30">Use password</button>
+            ) : (
+              <button onClick={() => setSignInCode(true)} className="bg-gray-600/50 py-2 my-4 rounded hover:cursor-pointer hover:bg-gray-600/30">Use a Sign-In Code</button>
+            )}
             <a href="/loginhelp" className="underline hover:text-gray-400 text-center">Forgot Password?</a>
             <div className="flex flex-row items-center my-4">
-              <input type="checkbox" className="mr-3" />
-              <p>Remember me</p>
+              <input type="checkbox" className="mr-3" checked={rememberMe} onClick={toggleRememberMe} />
+              <p onClick={toggleRememberMe} className="hover:cursor-pointer">Remember me</p>
             </div>
             <div className="flex flex-row items-center mb-4">
               <p className="text-gray-400 mr-2">New to Netflix? {' '}</p>
