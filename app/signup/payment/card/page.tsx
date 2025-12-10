@@ -2,11 +2,38 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 
 export default function Card() {
   const cardInputRef = useRef<HTMLInputElement>(null);
   const cvvInputRef = useRef<HTMLInputElement>(null);
+
+  const [planName, setPlanName] = useState<string>("");
+  const [planPrice, setPlanPrice] = useState<number>(0);
+
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    const plan = params.get("plan");
+
+    switch (plan) {
+      case "ads":
+        setPlanName("Standard with ads");
+        setPlanPrice(119);
+        break;
+      case "standard":
+        setPlanName("Standard");
+        setPlanPrice(249);
+        break;
+      case "premium":
+        setPlanName("Premium");
+        setPlanPrice(329);
+        break;
+      default:
+        setPlanName("Premium");
+        setPlanPrice(329);
+        break;
+    }
+  }, []);
 
   const toggleInput = (name: string) => {
     if (name === "card") {
@@ -34,16 +61,10 @@ export default function Card() {
       <section className="flex items-center justify-center">
         <div className="w-[30%] mt-10 pb-24 flex flex-col">
           <Link
-            className="flex flex-row items-center underline text-blue-700 hover:underline-offset-0"
+            className="flex flex-row items-center underline text-blue-700"
             href="/signup/payment"
           >
-            <Image
-              className="mr-2"
-              src="/back_arrow.png"
-              alt="back_arrow_icon"
-              width={10}
-              height={5}
-            />
+            <Image className="mr-2" src="/back_arrow.png" alt="back_arrow_icon" width={10} height={5} />
             Change payment method
           </Link>
           <p className="mt-5 text-sm">
@@ -53,6 +74,12 @@ export default function Card() {
           <h1 className="font-bold text-3xl">
             Set up your credit or debit card.
           </h1>
+          <div className="flex flex-row items-center mt-6">
+            <Image src="/payments/visa.png" alt="payment_image" width={45} height={5} />
+            <Image className="mx-1" src="/payments/mastercard.png" alt="payment_image" width={45} height={5} />
+            <Image src="/payments/amex.png" alt="payment_image" width={45} height={5} />
+            <Image className="ml-1" src="/payments/carnet.png" alt="payment_image" width={45} height={5} />
+          </div>
           <form>
             <div
               onClick={() => toggleInput("card")}
@@ -105,13 +132,28 @@ export default function Card() {
               placeholder="Name on card"
             />
           </form>
-          <div>
-            <div>
-              <h1>MXN 119/month</h1>
-              <p>Standard with ads</p>
+          <div className="bg-gray-400/20 my-5 rounded px-3 py-2 flex flex-row items-center justify-between">
+            <div className="flex flex-col">
+              <h1 className="font-bold">MXN {planPrice}/month</h1>
+              <p className="text-sm text-gray-600">{planName}</p>
             </div>
-            <div></div>
+            <Link className="text-blue-700 underline hover:text-blue-900" href="/signup/planform?change=true&paymentType=card">
+              Change
+            </Link>
           </div>
+          <p className="text-gray-800/70 text-sm mb-6">
+            Your payments will be processed internationally. Additional bank fees may apply.
+          </p>
+          <p className="text-gray-800/70 text-xs mb-4">
+            By checking the checkbox below, you agree to our Terms of Use, Privacy Statement, and that you are over 18. Netflix will automatically continue your membership and charge the membership fee (currently MXN 119/month) to your payment method until you cancel. You may cancel at any time to avoid future charges.
+          </p>
+          <div className="flex flex-row items-center">
+            <input type="checkbox" />
+            <p className="ml-2 text-gray-800/80 text-sm">I agree</p>
+          </div>
+          <button className="bg-red-600 hover:bg-red-800 w-full rounded text-white font-bold py-4 my-5 text-2xl">
+            Start Membership
+          </button>
         </div>
       </section>
     </main>
