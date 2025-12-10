@@ -2,8 +2,18 @@
 
 import Image from "next/image";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
+import { useState } from "react";
 
 export default function Planform() {
+  const [planChoosed, setPlanChoosed] = useState<string>("premium");
+
+  const router = useRouter();
+
+  const setPlan = (planType: string) => { setPlanChoosed(planType) };
+
+  const goPay = () => { router.push("/signup/payment") };
+
   return (
     <main className="bg-white text-black">
       <nav className="flex flex-row items-center justify-between py-7 border-b border-gray-600 w-full px-10">
@@ -21,15 +31,20 @@ export default function Planform() {
       </nav>
       <section className="px-40">
         <p className="mt-10 text-sm">
-          STEP <span className="font-bold">1</span> OF{" "}
+          STEP <span className="font-bold">3</span> OF{" "}
           <span className="font-bold">4</span>
         </p>
         <h1 className="text-4xl font-bold">Choose the plan that's right for you</h1>
         <div className="mt-5 mb-20 flex flex-row w-full">
-          <div className="w-1/3 flex flex-col p-3 border border-gray-700 rounded-xl">
+          <div onClick={() => setPlan("ads")} className="w-1/3 flex flex-col p-3 border border-gray-700 rounded-xl hover:cursor-pointer">
             <div className="bg-linear-to-r rounded px-2 pt-3 pb-2 from-sky-800 via-cyan-800 to-sky-950">
               <h1 className="text-white font-bold">Standard with ads</h1>
               <p className="text-white pb-3 text-sm">1080p</p>
+              {planChoosed == "ads" && (
+                <div className="flex justify-end">
+                  <Image src="/verify_white.png" alt="verify_icon" width={20} height={10} />
+                </div>
+              )}
             </div>
             <div className="mt-7 border-b border-gray-700">
               <h2 className="text-gray-700 font-medium text-sm">Monthly price</h2>
@@ -60,10 +75,15 @@ export default function Planform() {
               <p className="text-base font-extrabold pb-2">Less than you might think</p>
             </div>
           </div>
-          <div className="w-1/3 flex flex-col ml-2 p-3 border border-gray-700 rounded-xl">
+          <div onClick={() => setPlan("standard")} className="w-1/3 hover:cursor-pointer flex flex-col ml-2 p-3 border border-gray-700 rounded-xl">
             <div className="bg-linear-to-r rounded px-2 pt-3 pb-2 from-sky-800 via-cyan-800 to-sky-950">
               <h1 className="text-white font-bold">Standard</h1>
               <p className="text-white pb-3 text-sm">1080p</p>
+              {planChoosed == "standard" && (
+                <div className="flex justify-end">
+                  <Image src="/verify_white.png" alt="verify_icon" width={20} height={10} />
+                </div>
+              )}
             </div>
             <div className="mt-7 border-b border-gray-700">
               <h2 className="text-gray-700 font-medium text-sm">Monthly price</h2>
@@ -94,10 +114,15 @@ export default function Planform() {
               <p className="text-base font-extrabold pb-2">No ads</p>
             </div>
           </div>
-          <div className="w-1/3 flex flex-col ml-2 p-3 border border-gray-700 rounded-xl">
-            <div className="bg-linear-to-r rounded px-2 pt-3 pb-2 from-sky-800 via-cyan-800 to-sky-950">
+          <div onClick={() => setPlan("premium")} className="w-1/3 hover:cursor-pointer flex flex-col ml-2 p-3 border border-gray-700 rounded-xl">
+            <div className="bg-linear-to-r rounded px-2 pt-3 pb-2 from-fuchsia-800 to-pink-950">
               <h1 className="text-white font-bold">Premium</h1>
               <p className="text-white pb-3 text-sm">4K + HDR</p>
+              {planChoosed == "premium" && (
+                <div className="flex justify-end">
+                  <Image src="/verify_white.png" alt="verify_icon" width={20} height={10} />
+                </div>
+              )}
             </div>
             <div className="mt-7 border-b border-gray-700">
               <h2 className="text-gray-700 font-medium text-sm">Monthly price</h2>
@@ -135,7 +160,7 @@ export default function Planform() {
           <p>Only people who live with you may use your account. Add 1 extra member with Standard or up to 2 with Premium. Learn more. Watch on 4 different devices at the same time with remium and 2 with Standard or Standard with ads.</p>
           <p className="mt-3 mb-8">Live events are included with any Netflix plan and contain ads.</p>
           <div className="flex justify-center">
-            <button className="bg-red-600 text-white hover:bg-red-400 w-[30%] font-bold text-xl py-5 rounded">NEXT</button>
+            <button onClick={goPay} className="bg-red-600 text-white hover:bg-red-400 w-[30%] font-bold text-xl py-5 rounded">NEXT</button>
           </div>
         </div>
       </section>
