@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 
 export default function Card() {
@@ -10,6 +11,33 @@ export default function Card() {
 
   const [planName, setPlanName] = useState<string>("");
   const [planPrice, setPlanPrice] = useState<number>(0);
+
+  const [cardNumber, setCardNumber] = useState<string>("");
+  const [cardExpiration, setCardExpiration] = useState<string>("");
+  const [cvv, setCvv] = useState<string>("");
+  const [cardName, setCardName] = useState<string>("");
+
+  useEffect(() => {
+    setCardNumber(localStorage.getItem("signup_cardnumber") || "");
+    setCardExpiration(localStorage.getItem("signup_cardexpiration") || "");
+    setCvv(localStorage.getItem("signup_cardcvv") || "");
+    setCardName(localStorage.getItem("signup_cardname") || "");
+  }, []);
+
+  const router = useRouter();
+
+  const startMembership = () => {
+    // TODO: Delete local storage items
+  };
+
+  const changePlan = () => {
+    localStorage.setItem("signup_cardnumber", cardNumber);
+    localStorage.setItem("signup_cardexpiration", cardExpiration);
+    localStorage.setItem("signup_cardcvv", cvv);
+    localStorage.setItem("signup_cardname", cardName);
+
+    router.push("/signup/planform?change=true&paymentType=card");
+  };
 
   useEffect(() => {
     const params = new URLSearchParams(window.location.search);
@@ -64,7 +92,13 @@ export default function Card() {
             className="flex flex-row items-center underline text-blue-700"
             href="/signup/payment"
           >
-            <Image className="mr-2" src="/back_arrow.png" alt="back_arrow_icon" width={10} height={5} />
+            <Image
+              className="mr-2"
+              src="/back_arrow.png"
+              alt="back_arrow_icon"
+              width={10}
+              height={5}
+            />
             Change payment method
           </Link>
           <p className="mt-5 text-sm">
@@ -75,10 +109,32 @@ export default function Card() {
             Set up your credit or debit card.
           </h1>
           <div className="flex flex-row items-center mt-6">
-            <Image src="/payments/visa.png" alt="payment_image" width={45} height={5} />
-            <Image className="mx-1" src="/payments/mastercard.png" alt="payment_image" width={45} height={5} />
-            <Image src="/payments/amex.png" alt="payment_image" width={45} height={5} />
-            <Image className="ml-1" src="/payments/carnet.png" alt="payment_image" width={45} height={5} />
+            <Image
+              src="/payments/visa.png"
+              alt="payment_image"
+              width={45}
+              height={5}
+            />
+            <Image
+              className="mx-1"
+              src="/payments/mastercard.png"
+              alt="payment_image"
+              width={45}
+              height={5}
+            />
+            <Image
+              src="/payments/amex.png"
+              alt="payment_image"
+              width={45}
+              height={5}
+            />
+            <Image
+              className="ml-1"
+              src="/payments/carnet.png"
+              alt="payment_image"
+              width={45}
+              height={5}
+            />
           </div>
           <form>
             <div
@@ -89,7 +145,9 @@ export default function Card() {
                 ref={cardInputRef}
                 id="card_input"
                 type="number"
+                value={cardNumber}
                 placeholder="Card number"
+                onChange={(e) => setCardNumber(e.target.value)}
                 className="w-[85%] outline-none"
               />
               <Image
@@ -104,6 +162,8 @@ export default function Card() {
               <input
                 className="border border-gray-400 rounded px-5 py-4 w-1/2"
                 type="text"
+                onChange={(e) => setCardExpiration(e.target.value)}
+                value={cardExpiration}
                 placeholder="Expiration date"
               />
               <div
@@ -114,6 +174,8 @@ export default function Card() {
                   ref={cvvInputRef}
                   id="cvv_input"
                   type="number"
+                  onChange={(e) => setCvv(e.target.value)}
+                  value={cvv}
                   placeholder="CVV"
                   className="w-full outline-none"
                 />
@@ -129,31 +191,41 @@ export default function Card() {
             <input
               className="mt-4 border border-gray-400 rounded px-5 py-4 w-full"
               type="text"
+              onChange={(e) => setCardName(e.target.value)}
+              value={cardName}
               placeholder="Name on card"
             />
-          </form>
-          <div className="bg-gray-400/20 my-5 rounded px-3 py-2 flex flex-row items-center justify-between">
-            <div className="flex flex-col">
-              <h1 className="font-bold">MXN {planPrice}/month</h1>
-              <p className="text-sm text-gray-600">{planName}</p>
+            <div className="bg-gray-400/20 my-5 rounded px-3 py-2 flex flex-row items-center justify-between">
+              <div className="flex flex-col">
+                <h1 className="font-bold">MXN {planPrice}/month</h1>
+                <p className="text-sm text-gray-600">{planName}</p>
+              </div>
+              <button
+                onClick={changePlan}
+                className="text-blue-700 underline hover:text-blue-900"
+              >
+                Change
+              </button>
             </div>
-            <Link className="text-blue-700 underline hover:text-blue-900" href="/signup/planform?change=true&paymentType=card">
-              Change
-            </Link>
-          </div>
-          <p className="text-gray-800/70 text-sm mb-6">
-            Your payments will be processed internationally. Additional bank fees may apply.
-          </p>
-          <p className="text-gray-800/70 text-xs mb-4">
-            By checking the checkbox below, you agree to our Terms of Use, Privacy Statement, and that you are over 18. Netflix will automatically continue your membership and charge the membership fee (currently MXN 119/month) to your payment method until you cancel. You may cancel at any time to avoid future charges.
-          </p>
-          <div className="flex flex-row items-center">
-            <input type="checkbox" />
-            <p className="ml-2 text-gray-800/80 text-sm">I agree</p>
-          </div>
-          <button className="bg-red-600 hover:bg-red-800 w-full rounded text-white font-bold py-4 my-5 text-2xl">
-            Start Membership
-          </button>
+            <p className="text-gray-800/70 text-sm mb-6">
+              Your payments will be processed internationally. Additional bank
+              fees may apply.
+            </p>
+            <p className="text-gray-800/70 text-xs mb-4">
+              By checking the checkbox below, you agree to our Terms of Use,
+              Privacy Statement, and that you are over 18. Netflix will
+              automatically continue your membership and charge the membership
+              fee (currently MXN 119/month) to your payment method until you
+              cancel. You may cancel at any time to avoid future charges.
+            </p>
+            <div className="flex flex-row items-center">
+              <input type="checkbox" />
+              <p className="ml-2 text-gray-800/80 text-sm">I agree</p>
+            </div>
+            <button className="bg-red-600 hover:bg-red-800 w-full rounded text-white font-bold py-4 my-5 text-2xl">
+              Start Membership
+            </button>
+          </form>
         </div>
       </section>
     </main>
