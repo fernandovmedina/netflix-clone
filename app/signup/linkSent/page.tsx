@@ -3,7 +3,6 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { useState } from "react";
 
 export default function LinkSent() {
   const savedEmail = localStorage.getItem("signup_email");
@@ -11,6 +10,7 @@ export default function LinkSent() {
   const router: any = useRouter();
 
   const resendLink = () => {};
+  
   const createPassword = () => {
     router.push("/signup/regform")
   };

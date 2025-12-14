@@ -10,6 +10,8 @@ export default function Payment() {
 
   const router = useRouter();
 
+  const plan = new URLSearchParams(window.location.search).get("plan");
+
   const PaymentFields = () => {
     const paymentFieldsData = [
       {

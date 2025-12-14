@@ -15,21 +15,32 @@ export default function GiftCode() {
     setGiftCode(localStorage.getItem("signup_giftcode") || "");
   }, []);
 
+  useEffect(() => {
+    localStorage.setItem("signup_giftcode", giftCode);
+  }, [giftCode]);
+
   const router = useRouter();
 
   const startMembership = () => {
     // TODO: Delete local storage items
   };
 
-  const changePlan = () => {
+  const changePlan = (e: React.MouseEvent<HTMLButtonElement>) => {
+    e.preventDefault();
+
     localStorage.setItem("signup_giftcode", giftCode);
 
     router.push("/signup/planform?change=true&paymentType=gift");
   };
 
   useEffect(() => {
-    const params = new URLSearchParams(window.location.search);
-    const plan = params.get("plan");
+    const plan = localStorage.getItem("plan_choosed");
+
+    if (!plan) {
+      alert("No plan selected, redirecting to plan selection.");
+      router.push("/signup/planform");
+      return;
+    }
 
     switch (plan) {
       case "ads":
@@ -100,6 +111,7 @@ export default function GiftCode() {
                 <p className="text-sm text-gray-600">{planName}</p>
               </div>
               <button
+                type="button"
                 onClick={changePlan}
                 className="text-blue-700 underline hover:text-blue-900"
               >

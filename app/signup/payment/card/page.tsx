@@ -12,6 +12,8 @@ export default function Card() {
   const [planName, setPlanName] = useState<string>("");
   const [planPrice, setPlanPrice] = useState<number>(0);
 
+  const [isAgreed, setIsAgreed] = useState<boolean>(false);
+
   const [cardNumber, setCardNumber] = useState<string>("");
   const [cardExpiration, setCardExpiration] = useState<string>("");
   const [cvv, setCvv] = useState<string>("");
@@ -20,28 +22,43 @@ export default function Card() {
   useEffect(() => {
     setCardNumber(localStorage.getItem("signup_cardnumber") || "");
     setCardExpiration(localStorage.getItem("signup_cardexpiration") || "");
-    setCvv(localStorage.getItem("signup_cardcvv") || "");
     setCardName(localStorage.getItem("signup_cardname") || "");
   }, []);
 
   const router = useRouter();
 
-  const startMembership = () => {
-    // TODO: Delete local storage items
+  const startMembership = (e: React.MouseEvent<HTMLButtonElement>) => {
+    if (!isAgreed) {
+      e.preventDefault();
+      alert("You must agree to the terms to start membership.");
+      return;
+    } else {
+      // TODO: Process payment and start membership
+      // TODO: Save user payment info to database
+      localStorage.clear();
+
+      router.push("/");
+    }
   };
 
-  const changePlan = () => {
+  const changePlan = (e: React.MouseEvent<HTMLButtonElement>) => {
+    e.preventDefault();
+
     localStorage.setItem("signup_cardnumber", cardNumber);
     localStorage.setItem("signup_cardexpiration", cardExpiration);
-    localStorage.setItem("signup_cardcvv", cvv);
     localStorage.setItem("signup_cardname", cardName);
 
     router.push("/signup/planform?change=true&paymentType=card");
   };
 
   useEffect(() => {
-    const params = new URLSearchParams(window.location.search);
-    const plan = params.get("plan");
+    const plan = localStorage.getItem("plan_choosed");
+
+    if (!plan) {
+      alert("No plan selected, redirecting to plan selection.");
+      router.push("/signup/planform");
+      return;
+    }
 
     switch (plan) {
       case "ads":
@@ -144,11 +161,21 @@ export default function Card() {
               <input
                 ref={cardInputRef}
                 id="card_input"
-                type="number"
+                type="text"
                 value={cardNumber}
                 placeholder="Card number"
-                onChange={(e) => setCardNumber(e.target.value)}
                 className="w-[85%] outline-none"
+                onChange={(e) => {
+                  let value = e.target.value;
+
+                  value = value.replace(/\D/g, "");
+
+                  if (value.length > 16) value = value.slice(0, 16);
+
+                  value = value.replace(/(.{4})/g, "$1 ").trim();
+
+                  setCardNumber(value);
+                }}
               />
               <Image
                 src="/debit_card.png"
@@ -162,9 +189,21 @@ export default function Card() {
               <input
                 className="border border-gray-400 rounded px-5 py-4 w-1/2"
                 type="text"
-                onChange={(e) => setCardExpiration(e.target.value)}
-                value={cardExpiration}
                 placeholder="Expiration date"
+                value={cardExpiration}
+                onChange={(e) => {
+                  let value = e.target.value;
+
+                  value = value.replace(/\D/g, "");
+
+                  if (value.length > 4) value = value.slice(0, 4);
+
+                  if (value.length > 2) {
+                    value = value.slice(0, 2) + "/" + value.slice(2);
+                  }
+
+                  setCardExpiration(value);
+                }}
               />
               <div
                 onClick={() => toggleInput("cvv")}
@@ -201,6 +240,7 @@ export default function Card() {
                 <p className="text-sm text-gray-600">{planName}</p>
               </div>
               <button
+                type="button"
                 onClick={changePlan}
                 className="text-blue-700 underline hover:text-blue-900"
               >
@@ -219,10 +259,18 @@ export default function Card() {
               cancel. You may cancel at any time to avoid future charges.
             </p>
             <div className="flex flex-row items-center">
-              <input type="checkbox" />
+              <input
+                type="checkbox"
+                checked={isAgreed}
+                onChange={(e) => setIsAgreed(e.target.checked)}
+              />
               <p className="ml-2 text-gray-800/80 text-sm">I agree</p>
             </div>
-            <button className="bg-red-600 hover:bg-red-800 w-full rounded text-white font-bold py-4 my-5 text-2xl">
+            <button
+              type="submit"
+              onClick={startMembership}
+              className="bg-red-600 hover:bg-red-800 w-full rounded text-white font-bold py-4 my-5 text-2xl"
+            >
               Start Membership
             </button>
           </form>

@@ -17,13 +17,23 @@ export default function Oxxo() {
     setName(localStorage.getItem("signup_name") || "");
   }, []);
 
+  useEffect(() => {
+    localStorage.setItem("signup_mobilenumber", mobileNumber);
+  }, [mobileNumber]);
+
+  useEffect(() => {
+    localStorage.setItem("signup_name", name);
+  }, [name]);
+
   const router = useRouter();
 
   const startMembership = () => {
     // TODO: Delete local storage items
   };
 
-  const changePlan = () => {
+  const changePlan = (e: React.MouseEvent<HTMLButtonElement>) => {
+    e.preventDefault();
+
     localStorage.setItem("signup_mobilenumber", mobileNumber);
     localStorage.setItem("signup_name", name);
 
@@ -31,8 +41,13 @@ export default function Oxxo() {
   };
 
   useEffect(() => {
-    const params = new URLSearchParams(window.location.search);
-    const plan = params.get("plan");
+    const plan = localStorage.getItem("plan_choosed");
+
+    if (!plan) {
+      alert("Please select a plan first.");
+      router.push("/signup/planform");
+      return;
+    }
 
     switch (plan) {
       case "ads":
@@ -119,6 +134,7 @@ export default function Oxxo() {
                 <p className="text-sm text-gray-600">{planName}</p>
               </div>
               <button
+                type="button"
                 onClick={changePlan}
                 className="text-blue-700 underline hover:text-blue-900"
               >

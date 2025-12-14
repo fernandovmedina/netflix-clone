@@ -19,27 +19,26 @@ export default function Planform() {
     setChange(params.get("change"));
   }, []);
 
-  const setPlan = (planType: string) => {
-    setPlanChoosed(planType);
-  };
-
   const goPay = () => {
+    const _ = localStorage.setItem("plan_choosed", planChoosed);
+
     if (change) {
       switch (paymentType) {
         case "card":
-          router.push(`/signup/payment/card?plan=${planChoosed}`);
+          router.push(`/signup/payment/card`);
           break;
         case "gift":
-          router.push(`/signup/payment/gift_code?plan=${planChoosed}`);
+          router.push(`/signup/payment/gift_code`);
           break;
         case "oxxo":
-          router.push(`/signup/payment/oxxo?plan=${planChoosed}`);
+          router.push(`/signup/payment/oxxo`);
           break;
         default:
           router.push("/signup/payment");
       }
       return;
     }
+    
     router.push("/signup/payment");
   };
 
@@ -68,7 +67,7 @@ export default function Planform() {
         </h1>
         <div className="mt-5 mb-20 flex flex-row w-full">
           <div
-            onClick={() => setPlan("ads")}
+            onClick={() => setPlanChoosed("ads")}
             className="w-1/3 flex flex-col p-3 border border-gray-700 rounded-xl hover:cursor-pointer"
           >
             <div className="bg-linear-to-r rounded px-2 pt-3 pb-2 from-sky-800 via-cyan-800 to-sky-950">
@@ -129,7 +128,7 @@ export default function Planform() {
             </div>
           </div>
           <div
-            onClick={() => setPlan("standard")}
+            onClick={() => setPlanChoosed("standard")}
             className="w-1/3 hover:cursor-pointer flex flex-col ml-2 p-3 border border-gray-700 rounded-xl"
           >
             <div className="bg-linear-to-r rounded px-2 pt-3 pb-2 from-sky-800 via-cyan-800 to-sky-950">
@@ -188,7 +187,7 @@ export default function Planform() {
             </div>
           </div>
           <div
-            onClick={() => setPlan("premium")}
+            onClick={() => setPlanChoosed("premium")}
             className="w-1/3 hover:cursor-pointer flex flex-col ml-2 p-3 border border-gray-700 rounded-xl"
           >
             <div className="bg-linear-to-r rounded px-2 pt-3 pb-2 from-fuchsia-800 to-pink-950">
