@@ -3,7 +3,3 @@
 :root {
   background-color: black;
 }
-
-@theme inline {
-  --font-roboto: var(--font-roboto);
-}
