@@ -10,7 +10,6 @@ export const Navbar = () => {
           <a href="" className="hover:text-gray-400/90">Home</a>
           <a href="" className="hover:text-gray-400/90">Series</a>
           <a href="" className="hover:text-gray-400/90">Movies</a>
-          <a href="" className="hover:text-gray-400/90">Games</a>
           <a href="" className="hover:text-gray-400/90">Popular new arrivals</a>
           <a href="" className="hover:text-gray-400/90">My List</a>
           <a href="" className="hover:text-gray-400/90">Explore by language</a>
