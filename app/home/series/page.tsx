@@ -5,7 +5,7 @@ import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 import { Play, Plus, ThumbsUp } from "@deemlol/next-icons";
 
-export default function Home() {
+export default function Series() {
   const [selectedTitleId, setSelectedTitleId] = useState<number | null>(null);
 
   useEffect(() => {
