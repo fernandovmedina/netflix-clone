@@ -1,0 +1,6 @@
+{
+  "version": 3,
+  "sources": [],
+  "sections": [
+    {"offset": {"line": 18, "column": 0}, "map": {"version":3,"sources":["file:///Users/fernandovmedina/Documents/workspace/fernandovmedina/web/netflix-clone/app/loginhelp/page.tsx"],"sourcesContent":["import Image from \"next/image\";\nimport Link from \"next/link\";\n\nexport default function LoginHelp() {\n  return (\n    <main>\n      <div className=\"bg-[url(/home/hero_login.jpg)] bg-cover bg-center h-screen\">\n        <nav className=\"flex flex-row items-center justify-between text-white px-40 py-5 border-b border-gray-400\">\n          <Image src=\"/netflix_logo.svg\" width={150} height={20} alt=\"netflix_logo\" />\n          <Link href=\"/login\" className=\"bg-red-600 rounded px-5 py-2 font-bold hover:bg-red-700\">Sign In</Link>\n        </nav>\n      </div>\n    </main>\n  );\n}\n"],"names":[],"mappings":";;;;;AAAA;AACA;;;;AAEe,SAAS;IACtB,qBACE,8OAAC;kBACC,cAAA,8OAAC;YAAI,WAAU;sBACb,cAAA,8OAAC;gBAAI,WAAU;;kCACb,8OAAC,wIAAK;wBAAC,KAAI;wBAAoB,OAAO;wBAAK,QAAQ;wBAAI,KAAI;;;;;;kCAC3D,8OAAC,0LAAI;wBAAC,MAAK;wBAAS,WAAU;kCAA0D;;;;;;;;;;;;;;;;;;;;;;AAKlG"}}]
+}

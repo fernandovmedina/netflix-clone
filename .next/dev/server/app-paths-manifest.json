@@ -1,0 +1,20 @@
+{
+  "/ManageProfiles/page": "app/ManageProfiles/page.js",
+  "/browse/page": "app/browse/page.js",
+  "/home/movies/page": "app/home/movies/page.js",
+  "/home/my_list/page": "app/home/my_list/page.js",
+  "/home/new_arrivals/page": "app/home/new_arrivals/page.js",
+  "/home/page": "app/home/page.js",
+  "/home/series/page": "app/home/series/page.js",
+  "/page": "app/page.js",
+  "/settings/[uuid]/page": "app/settings/[uuid]/page.js",
+  "/signup/linkRegistration/page": "app/signup/linkRegistration/page.js",
+  "/signup/linkSent/page": "app/signup/linkSent/page.js",
+  "/signup/page": "app/signup/page.js",
+  "/signup/payment/card/page": "app/signup/payment/card/page.js",
+  "/signup/payment/oxxo/page": "app/signup/payment/oxxo/page.js",
+  "/signup/payment/page": "app/signup/payment/page.js",
+  "/signup/planform/page": "app/signup/planform/page.js",
+  "/signup/regform/page": "app/signup/regform/page.js",
+  "/signup/verifyEmail/page": "app/signup/verifyEmail/page.js"
+}
