@@ -335,7 +335,7 @@ export default function Home() {
             </select>
           </div>
           <h1 className="text-gray-200 mt-5 text-xl">Netflix</h1>
-          <h1 className="text-sm font-extrabold mt-3">Made by <a href="mailto:fernandovazquez.favm@gmail.com" className="underline">@fernandovmedina</a> & <a className="underline" href="https://neurovix.com.mx">Neurovix</a></h1>
+          <h1 className="text-sm font-extrabold mt-3">Made by <a target="_blank" href="https://github.com/fernandovmedina" className="underline">@fernandovmedina</a> & <a className="underline" href="https://neurovix.com.mx" target="_blank">@Neurovix</a></h1>
         </footer>
       </div>
     </main>

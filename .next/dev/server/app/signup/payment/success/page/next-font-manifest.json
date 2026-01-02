@@ -1,8 +1,0 @@
-{
-  "pages": {},
-  "app": {
-    "[project]/app/signup/payment/success/page": []
-  },
-  "appUsingSizeAdjust": true,
-  "pagesUsingSizeAdjust": false
-}

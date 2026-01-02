@@ -1,6 +1,0 @@
-{
-  "version": 3,
-  "sources": [],
-  "sections": [
-    {"offset": {"line": 22, "column": 0}, "map": {"version":3,"sources":["file:///Users/fernandovmedina/Documents/workspace/fernandovmedina/web/netflix-clone/app/signup/linkRegistration/page.tsx"],"sourcesContent":["import Image from \"next/image\";\nimport Link from \"next/link\";\n\nexport default function LinkRegistration() {\n  return (\n    <main className=\"bg-white text-black px-10\">\n      <nav className=\"flex flex-row items-center justify-between py-7\">\n        <Image src=\"/netflix_logo.svg\" alt=\"netflix_logo\" width={160} height={30} />\n        <Link href=\"/login\" className=\"font-bold hover:underline border-b border-gray-600\">Sign In</Link>\n      </nav>\n      <section>\n        <Image src=\"/devices.png\" alt=\"devices_image\" width={150} height={20} />\n      </section>\n    </main>\n  );\n}\n"],"names":[],"mappings":";;;;;AAAA;AACA;;;;AAEe,SAAS;IACtB,qBACE,8OAAC;QAAK,WAAU;;0BACd,8OAAC;gBAAI,WAAU;;kCACb,8OAAC,wIAAK;wBAAC,KAAI;wBAAoB,KAAI;wBAAe,OAAO;wBAAK,QAAQ;;;;;;kCACtE,8OAAC,0LAAI;wBAAC,MAAK;wBAAS,WAAU;kCAAqD;;;;;;;;;;;;0BAErF,8OAAC;0BACC,cAAA,8OAAC,wIAAK;oBAAC,KAAI;oBAAe,KAAI;oBAAgB,OAAO;oBAAK,QAAQ;;;;;;;;;;;;;;;;;AAI1E"}}]
-}

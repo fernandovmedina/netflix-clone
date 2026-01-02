@@ -1,8 +1,0 @@
-{
-  "pages": {},
-  "app": {
-    "[project]/app/signup/payment/gift_code/page": []
-  },
-  "appUsingSizeAdjust": true,
-  "pagesUsingSizeAdjust": false
-}

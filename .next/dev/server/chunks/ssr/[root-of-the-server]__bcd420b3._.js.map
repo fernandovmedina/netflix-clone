@@ -1,6 +1,0 @@
-{
-  "version": 3,
-  "sources": [],
-  "sections": [
-    {"offset": {"line": 16, "column": 0}, "map": {"version":3,"sources":["file:///Users/fernandovmedina/Documents/workspace/fernandovmedina/web/netflix-clone/pages/login.tsx"],"sourcesContent":["\"use client\";\n\nimport Image from \"next/image\";\n\nexport default function Login() {\n  return (\n    <main className=\"bg-black bg-[url('/home/hero.jpg')] bg-cover bg-center px-20 min-h-screen\">\n      <nav>\n        <Image\n          src=\"/netflix_logo.svg\"\n          alt=\"netflix_logo\"\n          width={170}\n          height={60}\n        />\n      </nav>\n      <div>\n        <h1>hola</h1>\n      </div>\n    </main>\n  );\n}\n"],"names":[],"mappings":";;;;;AAEA;AAFA;;;AAIe,SAAS;IACtB,qBACE,qKAAC;QAAK,WAAU;;0BACd,qKAAC;0BACC,cAAA,qKAAC,iIAAK;oBACJ,KAAI;oBACJ,KAAI;oBACJ,OAAO;oBACP,QAAQ;;;;;;;;;;;0BAGZ,qKAAC;0BACC,cAAA,qKAAC;8BAAG;;;;;;;;;;;;;;;;;AAIZ"}}]
-}

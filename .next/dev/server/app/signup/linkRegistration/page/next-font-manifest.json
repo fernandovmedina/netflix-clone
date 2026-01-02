@@ -1,8 +1,0 @@
-{
-  "pages": {},
-  "app": {
-    "[project]/app/signup/linkRegistration/page": []
-  },
-  "appUsingSizeAdjust": true,
-  "pagesUsingSizeAdjust": false
-}

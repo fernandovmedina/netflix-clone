@@ -1,6 +1,0 @@
-{
-  "version": 3,
-  "sources": [],
-  "sections": [
-    {"offset": {"line": 4, "column": 0}, "map": {"version":3,"sources":["file:///Users/fernandovmedina/Documents/workspace/fernandovmedina/web/netflix-clone/app/signup/layout.tsx"],"sourcesContent":["import type { Metadata } from \"next\";\nimport { Roboto } from \"next/font/google\";\nimport \"../globals.css\";\n\nconst getRoboto = Roboto({\n  variable: \"--font-roboto\",\n});\n\nexport const metadata: Metadata = {\n  title: \"Netflix\",\n  description: \"Created by @github.com/fernandovmedina\",\n};\n\nexport default function SignUpLayout({\n  children,\n}: {\n  children: React.ReactNode;\n}) {\n  return (\n    <div className={`${getRoboto.variable} antialiased`}>\n      {children}\n    </div>\n  );\n}\n"],"names":[],"mappings":";;;;;;;;;;;AAQO,MAAM,WAAqB;IAChC,OAAO;IACP,aAAa;AACf;AAEe,SAAS,aAAa,EACnC,QAAQ,EAGT;IACC,qBACE,8OAAC;QAAI,WAAW,GAAG,qJAAS,CAAC,QAAQ,CAAC,YAAY,CAAC;kBAChD;;;;;;AAGP"}}]
-}
