@@ -1,7 +1,7 @@
 -- =========================================
 -- Author: Fernando Vazquez
 -- Version: v1.0.0
--- Date: Dec 29, 2025
+-- Date: Dec 29, 2025 - Feb 15, 2026
 -- DB: PostgreSQL (Supabase compatible)
 -- =========================================
 
@@ -9,7 +9,7 @@
 -- ENUMS
 -- =========================
 drop type if exists title_type cascade;
-create type title_type as enum ('movie', 'series');
+create type title_type as enum ('Movie', 'TV Show');
 
 -- =========================
 -- ACTORS
@@ -75,7 +75,7 @@ create table movies (
   id_movie integer generated always as identity primary key,
   id_title integer not null unique,
   duration integer,
-  hls_manifest_path text not null,
+  hls_manifest_path text null,
   created_at timestamptz not null default now(),
   updated_at timestamptz,
   deleted_at timestamptz,
@@ -126,7 +126,7 @@ create table episodes (
   description text,
   duration integer,
   thumbnail_url text,
-  hls_manifest_path text not null,
+  hls_manifest_path text null,
   created_at timestamptz not null default now(),
   updated_at timestamptz,
   deleted_at timestamptz,

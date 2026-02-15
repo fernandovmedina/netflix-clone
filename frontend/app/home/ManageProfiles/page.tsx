@@ -15,7 +15,7 @@ export default function ManageProfiles() {
   }) => {
     return (
       <div className="relative flex flex-col items-center mx-2 cursor-pointer group">
-        <Link href={`/settings/${uuid}?referrer=ManageProfiles`}>
+        <Link href={`/home/settings/${uuid}?referrer=ManageProfiles`}>
           <div className="relative">
             <Image
               src={profileURL}
@@ -97,7 +97,7 @@ export default function ManageProfiles() {
           <ProfileCards />
         </div>
         <Link
-          href="/browse"
+          href="/home/browse"
           className="bg-white text-black px-5 py-2 font-bold hover:bg-red-600 hover:text-white"
         >
           Ready

@@ -1,21 +1,36 @@
-import type { Metadata } from "next";
+"use client";
+
 import { Roboto } from "next/font/google";
 import "./globals.css";
+import { useRouter } from "next/navigation";
+import { useEffect } from "react";
+import { createClient } from "@/utils/supabase/client";
 
 const getRoboto = Roboto({
   variable: "--font-roboto",
-})
-
-export const metadata: Metadata = {
-  title: "Netflix - Watch TV Shows Online, Watch Movies Online",
-  description: "Created by @github.com/fernandovmedina",
-};
+});
 
 export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const router = useRouter();
+  
+  useEffect(() => {
+    const supabase = createClient();
+
+    const checkSession = async () => {
+      const { data: { session } } = await supabase.auth.getSession();
+
+      if (session) {
+        router.replace("/home/browse");
+      }
+    };
+
+    checkSession();
+  }, [router]);
+
   return (
     <html lang="en">
       <head>

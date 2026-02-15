@@ -1,3 +1,4 @@
+import { createClient } from "@/utils/supabase/client";
 import { ArrowRightCircle, Edit2, Info, User } from "@deemlol/next-icons";
 import Image from "next/image";
 import { useEffect, useState } from "react";
@@ -8,6 +9,18 @@ export const Navbar = () => {
   useEffect(() => {
     setUuid(new URLSearchParams(window.location.search).get("uuid"));
   }, []);
+
+  const handleLogOut = async () => {
+    const supabase = createClient();
+
+    const { error } = await supabase.auth.signOut();
+
+    if (error) {
+      console.error("Error signing out: ", error.message);
+    } else {
+      window.location.href = "/";
+    }
+  }
 
   const ProfileView = ({ url, name }: { url: string; name: string }) => {
     return (
@@ -69,9 +82,9 @@ export const Navbar = () => {
           </a>
         </div>
         <div className="flex flex-row items-center hover:font-bold text-sm">
-          <a href="" className="hover:cursor-pointer hover:underline">
+          <button onClick={handleLogOut} className="hover:cursor-pointer hover:underline">
             Log out
-          </a>
+          </button>
         </div>
       </div>
     );

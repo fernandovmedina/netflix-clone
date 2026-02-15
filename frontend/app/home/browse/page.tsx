@@ -115,7 +115,7 @@ export default function Browse() {
           <ProfileCards />
         </div>
         <Link
-          href="/ManageProfiles"
+          href="/home/ManageProfiles"
           className="border-2 border-gray-500/70 text-gray-500/70 hover:text-white hover:border-white px-5 py-2"
         >
           Manage Profiles

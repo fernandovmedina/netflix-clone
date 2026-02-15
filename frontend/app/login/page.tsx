@@ -1,7 +1,9 @@
 "use client";
 
+import { createClient } from "@/utils/supabase/client";
 import Image from "next/image";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { useState } from "react";
 
 export default function Login() {
@@ -13,6 +15,26 @@ export default function Login() {
   const [emailAlert, setEmailAlert] = useState<string>("");
   const [mobileNumberAlert, setMobileNumberAlert] = useState<string>("");
   const [passwordAlert, setPasswordAlert] = useState<string>("");
+
+  const router = useRouter();
+
+  const handleSignIn = async (type: string) => {
+    verifySignIn(type);
+
+    const supabase = createClient();
+
+    const { error } = await supabase.auth.signInWithPassword({
+      email: email,
+      password: password,
+    });
+
+    if (error) {
+      console.error("Error signing in: ", error.message);
+      return;
+    }
+
+    router.push("/home/browse");
+  }
 
   const toggleRememberMe = (e: React.ChangeEvent<HTMLInputElement>) => {
     setRememberMe(e.target.checked);
@@ -78,7 +100,7 @@ export default function Login() {
             {signInCode ? (
               <button onClick={() => verifySignIn("code")} className="bg-red-600 my-4 py-2 font-bold rounded hover:bg-red-700 hover:cursor-pointer">Send Sign-In Code</button>
             ) : (
-              <button onClick={() => verifySignIn("password")} className="bg-red-600 my-4 py-2 font-bold rounded hover:bg-red-700 hover:cursor-pointer">Sign In</button>
+              <button onClick={() => handleSignIn("password")} className="bg-red-600 my-4 py-2 font-bold rounded hover:bg-red-700 hover:cursor-pointer">Sign In</button>
             )}
             <p className="text-center text-gray-400">OR</p>
             {signInCode ? (
