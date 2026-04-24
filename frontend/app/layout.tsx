@@ -1,10 +1,10 @@
 "use client";
 
 import { Roboto } from "next/font/google";
-import "./globals.css";
+import { createClient } from "@/utils/supabase/client";
 import { useRouter } from "next/navigation";
 import { useEffect } from "react";
-import { createClient } from "@/utils/supabase/client";
+import "./globals.css";
 
 const getRoboto = Roboto({
   variable: "--font-roboto",
@@ -16,7 +16,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   const router = useRouter();
-  
+
   useEffect(() => {
     const supabase = createClient();
 

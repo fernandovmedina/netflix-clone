@@ -1,5 +1,6 @@
 "use client";
 
+import AlertMessage from "@/components/AlertMessage";
 import { createClient } from "@/utils/supabase/client";
 import Image from "next/image";
 import Link from "next/link";
@@ -15,6 +16,7 @@ export default function Login() {
   const [emailAlert, setEmailAlert] = useState<string>("");
   const [mobileNumberAlert, setMobileNumberAlert] = useState<string>("");
   const [passwordAlert, setPasswordAlert] = useState<string>("");
+  const [isLoginError, setIsLoginError] = useState<boolean>(false);
 
   const router = useRouter();
 
@@ -29,7 +31,7 @@ export default function Login() {
     });
 
     if (error) {
-      console.error("Error signing in: ", error.message);
+      setIsLoginError(true);
       return;
     }
 
@@ -84,6 +86,11 @@ export default function Login() {
         <div className="flex items-center justify-center">
           <div className="text-white flex flex-col bg-black/90 mt-10 px-15 py-10 w-[40%]">
             <h1 className="font-extrabold text-3xl">Sign In</h1>
+            <AlertMessage
+              message="Correo o contraseña equivocados"
+              isOpened={isLoginError}
+              onClose={() => setIsLoginError(false)}
+            />
             {signInCode ? (
               <>
                 <input onChange={(e) => setMobileNumber(e.target.value)} className="mt-5 border-2 border-gray-500 px-5 py-3 rounded placeholder:text-gray-300 bg-gray-900/50" type="email" placeholder="Email or mobile number" />
