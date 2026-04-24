@@ -2,7 +2,7 @@
 
 import { Roboto } from "next/font/google";
 import { createClient } from "@/utils/supabase/client";
-import { useRouter } from "next/navigation";
+import { useRouter, usePathname } from "next/navigation";
 import { useEffect } from "react";
 import "./globals.css";
 
@@ -16,6 +16,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   const router = useRouter();
+  const pathname = usePathname();
 
   useEffect(() => {
     const supabase = createClient();
@@ -23,7 +24,7 @@ export default function RootLayout({
     const checkSession = async () => {
       const { data: { session } } = await supabase.auth.getSession();
 
-      if (session) {
+      if (session && (pathname === "/" || pathname === "/login")) {
         router.replace("/home/browse");
       }
     };
